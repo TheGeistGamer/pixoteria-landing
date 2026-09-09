@@ -39,6 +39,7 @@ export const prerender = true;
 						<a href="#barajas" class="pixel toplink">Barajas</a>
 						<a href="#capturas" class="pixel toplink">Capturas</a>
 						<a href="#privacidad" class="pixel toplink">Privacidad</a>
+						<a href="#soporte" class="pixel toplink">Soporte</a>
 					</nav>
 				</div>
 			</header>
@@ -403,13 +404,13 @@ export const prerender = true;
 
 			<!-- HECHO POR -->
 			<section class="section made-by">
-				<div class="mx-auto max-w-7xl px-[25px] sm:px-8 md:px-12 lg:px-16 narrow center">
+				<div class="mx-auto max-w-7xl px-[25px] sm:px-8 md:px-12 lg:px-16 center">
 					<div class="card-thumb made-by-card">
-						<img src="/images/cards/hero-fan.jpg" alt="Abanico de cartas de lotería de Pixotería" />
+						<img src="/images/cards/el-corazon.png" alt="Carta El Corazón" />
 					</div>
 					<div class="eyebrow">De dónde sale esto</div>
-					<h2 class="heading-lg">Hecha por alguien a quien le gusta la lotería de verdad</h2>
-					<p class="body-copy centered-copy">
+					<h2 class="heading-lg mx-auto max-w-2xl">Hecha por alguien a quien le gusta la lotería de verdad</h2>
+					<p class="body-copy centered-copy mx-auto max-w-2xl">
 						Pixotería nació de las ganas de jugar lotería con la familia sin
 						depender de una impresora ni de una app que pida tu correo para
 						cantar "El Borracho". Nueve barajas después, sigue siendo eso: un
@@ -420,9 +421,9 @@ export const prerender = true;
 
 			<!-- PRIVACIDAD -->
 			<section class="section privacy-section" id="privacidad">
-				<div class="mx-auto max-w-7xl px-[25px] sm:px-8 md:px-12 lg:px-16 narrow">
+				<div class="mx-auto max-w-7xl px-[25px] sm:px-8 md:px-12 lg:px-16">
 					<div class="eyebrow">Antes de que preguntes</div>
-					<h2 class="heading-lg">Política de privacidad</h2>
+					<h2 class="heading-lg max-w-2xl">Política de privacidad</h2>
 
 					<div class="privacy-tabs">
 						<input type="radio" name="privacy-lang" id="tab-es" checked />
@@ -433,14 +434,14 @@ export const prerender = true;
 						</div>
 						<div class="panels">
 							<div class="tab-panel" id="panel-es">
-								<p class="body-copy wide-copy">
+								<p class="body-copy max-w-2xl">
 									<strong
 										>Pixotería no recolecta, no almacena en servidores ni
 										comparte datos personales para jugar.</strong
 									> No hay cuentas ni registro. Tu nombre de jugador se queda en
 									tu teléfono y solo lo ven los demás en esa partida.
 								</p>
-								<ul class="privacy-list">
+								<ul class="privacy-list flex flex-col gap-3.5 md:grid md:grid-cols-3 md:gap-x-10 md:gap-y-0">
 									<li>
 										<span class="dot"></span>Publicidad opcional: si decides ver
 										un anuncio para rentar un mazo, Google AdMob puede procesar
@@ -468,14 +469,14 @@ export const prerender = true;
 								</p>
 							</div>
 							<div class="tab-panel" id="panel-en">
-								<p class="body-copy wide-copy">
+								<p class="body-copy max-w-2xl">
 									<strong
 										>Pixotería does not collect, store on servers, or share
 										personal data to play.</strong
 									> There are no accounts and no sign-up. Your player name stays
 									on your phone and is only shown to others in that game.
 								</p>
-								<ul class="privacy-list">
+								<ul class="privacy-list flex flex-col gap-3.5 md:grid md:grid-cols-3 md:gap-x-10 md:gap-y-0">
 									<li>
 										<span class="dot"></span>Optional advertising: if you choose
 										to watch an ad to rent a deck, Google AdMob may process your
@@ -509,6 +510,75 @@ export const prerender = true;
 							>contacto@infinitydev.agency</a
 						>
 					</p>
+				</div>
+			</section>
+
+			<!-- SOPORTE -->
+			<section class="section support-section" id="soporte">
+				<div class="mx-auto max-w-7xl px-[25px] sm:px-8 md:px-12 lg:px-16">
+					<div class="eyebrow">¿Se te atoró algo?</div>
+					<h2 class="heading-lg max-w-2xl">Soporte</h2>
+					<p class="body-copy max-w-2xl">
+						Antes de escribirnos, revisa si tu duda ya está aquí — si no, mándanos
+						un mensaje y te contestamos a tu correo.
+					</p>
+
+					<div class="faq-grid">
+						<div class="faq-item">
+							<div class="faq-q pixel">¿Cómo juego con mis amigos?</div>
+							<div class="faq-a">
+								Uno crea la partida, los demás la buscan desde la misma red
+								WiFi y se unen — sin escribir direcciones ni códigos.
+							</div>
+						</div>
+						<div class="faq-item">
+							<div class="faq-q pixel">¿Necesito internet para jugar?</div>
+							<div class="faq-a">
+								No. Solo tu red WiFi local. Internet solo hace falta si decides
+								ver un anuncio o comprar un mazo.
+							</div>
+						</div>
+						<div class="faq-item">
+							<div class="faq-q pixel">¿Cómo desbloqueo un mazo?</div>
+							<div class="faq-a">
+								Comprándolo, o viendo un anuncio para rentarlo 24 horas gratis.
+							</div>
+						</div>
+						<div class="faq-item">
+							<div class="faq-q pixel">¿Cómo borro mis datos?</div>
+							<div class="faq-a">
+								Desinstala la app. Todo vive en tu teléfono — no hay nada
+								guardado en ningún servidor nuestro que borrar.
+							</div>
+						</div>
+					</div>
+
+					<div class="support-form-wrap">
+						<h3 class="pixel support-form-title">Escríbenos</h3>
+						<form
+							class="support-form"
+							action="mailto:contacto@infinitydev.agency"
+							method="post"
+							enctype="text/plain"
+						>
+							<label class="support-label pixel" for="support-name">Nombre</label>
+							<input class="support-input" id="support-name" name="Nombre" type="text" required />
+
+							<label class="support-label pixel" for="support-email">Tu correo</label>
+							<input class="support-input" id="support-email" name="Correo" type="email" required />
+
+							<label class="support-label pixel" for="support-message">Mensaje</label>
+							<textarea class="support-input support-textarea" id="support-message" name="Mensaje" rows="4" required
+							></textarea>
+
+							<button type="submit" class="btn-pixel">Enviar</button>
+							<p class="support-note">
+								Se abre tu app de correo con el mensaje ya redactado hacia
+								contacto@infinitydev.agency — nosotros no vemos nada hasta que
+								tú le des enviar ahí.
+							</p>
+						</form>
+					</div>
 				</div>
 			</section>
 
@@ -1187,9 +1257,6 @@ export const prerender = true;
 		list-style: none;
 		margin: 20px 0 0;
 		padding: 0;
-		display: flex;
-		flex-direction: column;
-		gap: 14px;
 	}
 	.privacy-list li {
 		display: flex;
@@ -1215,6 +1282,81 @@ export const prerender = true;
 		margin-top: 32px;
 		font-size: 17px;
 		color: #6b4436;
+	}
+
+	.support-section {
+		background: #fbf3e4;
+		border-top: 4px solid #3f2832;
+		border-bottom: 4px solid #3f2832;
+	}
+	.faq-grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 24px;
+		margin-top: 40px;
+		max-width: 56rem;
+	}
+	.faq-item {
+		background: #fff9dc;
+		border: 3px solid #3f2832;
+		box-shadow: 4px 4px 0 0 #8f3e13;
+		padding: 18px 20px;
+	}
+	.faq-q {
+		font-size: 16px;
+		color: #3f2832;
+		margin-bottom: 8px;
+	}
+	.faq-a {
+		font-size: 15px;
+		line-height: 1.55;
+		color: #6b4436;
+	}
+
+	.support-form-wrap {
+		margin-top: 56px;
+		max-width: 32rem;
+	}
+	.support-form-title {
+		font-size: 22px;
+		color: #3f2832;
+		margin: 0 0 20px;
+	}
+	.support-form {
+		display: flex;
+		flex-direction: column;
+		gap: 6px;
+	}
+	.support-label {
+		font-size: 14px;
+		color: #6b4436;
+		margin-top: 12px;
+	}
+	.support-input {
+		font-family: 'Archivo', system-ui, sans-serif;
+		font-size: 16px;
+		padding: 12px 14px;
+		border: 3px solid #3f2832;
+		background: #fff9dc;
+		color: #3f2832;
+	}
+	.support-input:focus {
+		outline: 3px solid #0095e9;
+		outline-offset: 1px;
+	}
+	.support-textarea {
+		resize: vertical;
+		font-family: 'Archivo', system-ui, sans-serif;
+	}
+	.support-form .btn-pixel {
+		margin-top: 18px;
+		align-self: flex-start;
+	}
+	.support-note {
+		margin-top: 12px;
+		font-size: 13px;
+		line-height: 1.5;
+		color: #96573d;
 	}
 
 	.footer {
@@ -1264,6 +1406,9 @@ export const prerender = true;
 			grid-template-columns: 1fr;
 		}
 		.feature-grid {
+			grid-template-columns: 1fr;
+		}
+		.faq-grid {
 			grid-template-columns: 1fr;
 		}
 		.heading-lg {
