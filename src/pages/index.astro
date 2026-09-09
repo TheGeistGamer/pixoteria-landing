@@ -1,4 +1,6 @@
 ---
+import '../styles/global.css';
+
 export const prerender = true;
 ---
 
@@ -43,7 +45,7 @@ export const prerender = true;
 
 			<!-- HERO -->
 			<section class="section hero" id="inicio">
-				<div class="container hero-grid">
+				<div class="mx-auto max-w-7xl px-[25px] sm:px-8 md:px-12 lg:px-16 hero-grid">
 					<div>
 						<div class="eyebrow">Lotería mexicana · multijugador local</div>
 						<h1 class="pixel hero-title">EL MAZO LO ELIGE<br />QUIEN INVITA</h1>
@@ -93,7 +95,7 @@ export const prerender = true;
 
 			<!-- GOLD BADGE STRIP -->
 			<section class="checker-gold section badge-section" id="mazos">
-				<div class="container">
+				<div class="mx-auto max-w-7xl px-[25px] sm:px-8 md:px-12 lg:px-16">
 					<div class="center">
 						<h2 class="pixel badge-heading">ELIGE TU MAZO</h2>
 					</div>
@@ -179,7 +181,7 @@ export const prerender = true;
 
 			<!-- MAROON SHOWCASE -->
 			<section class="checker-red section">
-				<div class="container showcase-split">
+				<div class="mx-auto max-w-7xl px-[25px] sm:px-8 md:px-12 lg:px-16 showcase-split">
 					<div class="showcase-shot">
 						<img src="/images/cards/terror-muneca.png" alt="Carta La Muñeca Embrujada, del mazo Terror Clásico" />
 					</div>
@@ -198,7 +200,7 @@ export const prerender = true;
 
 			<!-- BLUE MANIFESTO -->
 			<section class="checker-blue section">
-				<div class="container center">
+				<div class="mx-auto max-w-7xl px-[25px] sm:px-8 md:px-12 lg:px-16 center">
 					<h2 class="pixel manifesto-title">SIN CUENTAS. SIN NUBE.<br />SIN LETRAS CHIQUITAS.</h2>
 					<p class="manifesto-copy">Nada que registrar, nada que rastrear. Así de simple.</p>
 					<div class="feature-grid feature-grid--wide">
@@ -257,7 +259,7 @@ export const prerender = true;
 
 			<!-- 9 BARAJAS, DE CERCA -->
 			<section class="section" id="barajas">
-				<div class="container">
+				<div class="mx-auto max-w-7xl px-[25px] sm:px-8 md:px-12 lg:px-16">
 					<div class="center">
 						<div class="eyebrow">Nueve mundos, una lotería</div>
 						<h2 class="heading-lg">Las 9 barajas, de cerca</h2>
@@ -355,7 +357,7 @@ export const prerender = true;
 
 			<!-- GALERÍA -->
 			<section class="section checker-bg gallery-section" id="capturas">
-				<div class="container">
+				<div class="mx-auto max-w-7xl px-[25px] sm:px-8 md:px-12 lg:px-16">
 					<div class="center">
 						<div class="eyebrow eyebrow--gold">Así se ve</div>
 						<h2 class="heading-lg heading-lg--light">Directo del teléfono</h2>
@@ -401,7 +403,7 @@ export const prerender = true;
 
 			<!-- HECHO POR -->
 			<section class="section made-by">
-				<div class="container narrow center">
+				<div class="mx-auto max-w-7xl px-[25px] sm:px-8 md:px-12 lg:px-16 narrow center">
 					<div class="card-thumb made-by-card">
 						<img src="/images/cards/hero-fan.jpg" alt="Abanico de cartas de lotería de Pixotería" />
 					</div>
@@ -418,7 +420,7 @@ export const prerender = true;
 
 			<!-- PRIVACIDAD -->
 			<section class="section privacy-section" id="privacidad">
-				<div class="container narrow">
+				<div class="mx-auto max-w-7xl px-[25px] sm:px-8 md:px-12 lg:px-16 narrow">
 					<div class="eyebrow">Antes de que preguntes</div>
 					<h2 class="heading-lg">Política de privacidad</h2>
 
@@ -512,7 +514,7 @@ export const prerender = true;
 
 			<!-- FOOTER -->
 			<footer class="checker-bg footer">
-				<div class="container footer-row">
+				<div class="mx-auto max-w-7xl px-[25px] sm:px-8 md:px-12 lg:px-16 footer-row">
 					<div class="pixel footer-brand">PIXOTERÍA © 2026</div>
 					<a href="https://thegeistgamer.github.io/loteria-privacidad/" target="_blank" rel="noopener" class="footer-link">
 						Política de privacidad completa
@@ -671,14 +673,11 @@ export const prerender = true;
 	}
 
 	.section {
-		padding: 72px 24px;
+		padding-top: 72px;
+		padding-bottom: 72px;
 	}
-	.container {
-		max-width: 1080px;
-		margin: 0 auto;
-	}
-	.container.narrow {
-		max-width: 760px;
+	.narrow {
+		max-width: 48rem !important;
 	}
 	.center {
 		text-align: center;
