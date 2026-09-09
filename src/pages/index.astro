@@ -1,0 +1,1239 @@
+---
+export const prerender = true;
+---
+
+<html lang="es">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="generator" content={Astro.generator} />
+		<link rel="icon" type="image/png" href="/images/icon.png" />
+		<title>Pixotería — La lotería que se juega en tu mesa</title>
+		<meta
+			name="description"
+			content="Lotería mexicana multijugador por WiFi local. Nueve barajas, sin cuentas, sin internet. Descubre Pixotería."
+		/>
+		<meta property="og:title" content="Pixotería — La lotería que se juega en tu mesa" />
+		<meta
+			property="og:description"
+			content="Lotería mexicana multijugador por WiFi local. Nueve barajas, sin cuentas, sin internet."
+		/>
+		<meta property="og:image" content="/images/icon.png" />
+		<meta property="og:type" content="website" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&display=swap"
+		/>
+	</head>
+	<body>
+		<div class="page">
+			<div class="checker-bg topbar">
+				<div class="pixel wordmark">PIXOTERÍA</div>
+				<a href="#privacidad" class="pixel toplink">Privacidad</a>
+			</div>
+
+			<!-- HERO -->
+			<section class="section hero">
+				<div class="container hero-grid">
+					<div>
+						<div class="eyebrow">Lotería mexicana · multijugador local</div>
+						<h1 class="pixel hero-title">EL MAZO LO ELIGE<br />QUIEN INVITA</h1>
+						<p class="hero-copy">
+							Lo que escojas lo ven todos en tu mesa. Nueve barajas, cero
+							cuentas, cero internet — solo tu WiFi y tu gente.
+						</p>
+						<div class="hero-buttons">
+							<span class="btn-pixel btn-pixel--green btn-pixel--static">
+								<svg
+									width="20"
+									height="20"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									><path
+										d="M16 3c0 2-1.5 4-4 4S8 5 8 3M6 8c1-1.5 3-2 6-2s5 .5 6 2c1.2 1.6 2 4 2 7 0 5-3 9-8 9s-8-4-8-9c0-3 .8-5.4 2-7z"
+									></path></svg
+								>
+								Próximamente · App Store
+							</span>
+							<span class="btn-pixel btn-pixel--play btn-pixel--static">
+								<svg
+									width="20"
+									height="20"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"><path d="M4 3l16 9-16 9V3z"></path></svg
+								>
+								Próximamente · Google Play
+							</span>
+						</div>
+						<div class="pixel hero-tag">9 BARAJAS · 100% LOCAL · SIN CUENTAS</div>
+					</div>
+
+					<div class="hero-scene">
+						<img
+							src="/images/cards/hero-fan.jpg"
+							alt="Abanico de cartas de lotería de Pixotería: El Mercado, La Ofrenda y más"
+							class="hero-scene-img"
+						/>
+					</div>
+				</div>
+			</section>
+
+			<!-- GOLD BADGE STRIP -->
+			<section class="checker-gold section badge-section">
+				<div class="container">
+					<div class="center">
+						<h2 class="pixel badge-heading">ELIGE TU MAZO</h2>
+					</div>
+					<div class="badge-strip-wrap">
+						<div class="badge-arrow">
+							<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+								><path d="M15 6l-6 6 6 6"></path></svg
+							>
+						</div>
+						<div class="badge-strip">
+							<div class="badge-item">
+								<div class="card-thumb">
+									<img src="/images/cards/perrault-zapato-cristal.png" alt="Carta El Zapato de Cristal, del mazo Cuentos de Perrault" />
+								</div>
+								<div class="deck-name">Perrault</div>
+								<div class="deck-desc">Cenicienta, Caperucita, El Gato con Botas y más.</div>
+							</div>
+							<div class="badge-item">
+								<div class="card-thumb">
+									<img src="/images/cards/grimm-principe-rana.png" alt="Carta El Príncipe Rana, del mazo Hermanos Grimm" />
+								</div>
+								<div class="deck-name">Grimm</div>
+								<div class="deck-desc">Hansel y Gretel, Blancanieves, Rapunzel y más.</div>
+							</div>
+							<div class="badge-item">
+								<div class="card-thumb">
+									<img src="/images/cards/carroll-jardin-rosas.png" alt="Carta El Jardín de Rosas, del mazo País de las Maravillas" />
+								</div>
+								<div class="deck-name">Carroll</div>
+								<div class="deck-desc">El Conejo Blanco, el Sombrerero Loco, el Gato de Cheshire.</div>
+							</div>
+							<div class="badge-item">
+								<div class="card-thumb">
+									<img src="/images/cards/piratas-kraken.png" alt="Carta El Kraken, del mazo Piratas" />
+								</div>
+								<div class="deck-name">Piratas</div>
+								<div class="deck-desc">El capitán, el kraken, el mapa del tesoro y más.</div>
+							</div>
+							<div class="badge-item">
+								<div class="card-thumb">
+									<img src="/images/cards/griego-zeus.png" alt="Carta Zeus, del mazo Mitología Griega" />
+								</div>
+								<div class="deck-name">Griego</div>
+								<div class="deck-desc">Zeus, Atenea, Medusa, el Minotauro y más.</div>
+							</div>
+							<div class="badge-item">
+								<div class="card-thumb">
+									<img src="/images/cards/muertos-fruta-temporada.png" alt="Carta La Fruta de Temporada, del mazo Día de Muertos" />
+								</div>
+								<div class="deck-name">Muertos</div>
+								<div class="deck-desc">La Catrina, el Xoloitzcuintle, la Calaverita de Azúcar.</div>
+							</div>
+							<div class="badge-item">
+								<div class="card-thumb">
+									<img src="/images/cards/cyberpunk-androide.png" alt="Carta El Androide, del mazo Cyberpunk" />
+								</div>
+								<div class="deck-name">Cyberpunk</div>
+								<div class="deck-desc">El hacker, el androide, la megaciudad y más.</div>
+							</div>
+							<div class="badge-item">
+								<div class="card-thumb">
+									<img src="/images/cards/terror-muneca.png" alt="Carta La Muñeca Embrujada, del mazo Terror Clásico" />
+								</div>
+								<div class="deck-name">Terror</div>
+								<div class="deck-desc">El vampiro, el hombre lobo, la casa embrujada y más.</div>
+							</div>
+							<div class="badge-item">
+								<div class="card-thumb">
+									<img src="/images/cards/nordico-thor.png" alt="Carta Thor, del mazo Mitología Nórdica" />
+								</div>
+								<div class="deck-name">Nórdico</div>
+								<div class="deck-desc">Odín, Thor, Loki, Fenrir y más.</div>
+							</div>
+						</div>
+						<div class="badge-arrow">
+							<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+								><path d="M9 6l6 6-6 6"></path></svg
+							>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- MAROON SHOWCASE -->
+			<section class="checker-red section">
+				<div class="container showcase-split">
+					<div class="showcase-shot">
+						<img src="/images/cards/terror-muneca.png" alt="Carta La Muñeca Embrujada, del mazo Terror Clásico" />
+					</div>
+					<div>
+						<div class="eyebrow eyebrow--light">Baraja destacada</div>
+						<h2 class="pixel showcase-title">TERROR CLÁSICO</h2>
+						<p class="showcase-copy">
+							54 monstruos, objetos y lugares de terror clásico: el vampiro,
+							el hombre lobo, la casa embrujada y más — una de las nueve
+							barajas que puedes desbloquear.
+						</p>
+						<a href="#barajas" class="btn-pixel btn-pixel--gold-cta">Ver las 9 barajas</a>
+					</div>
+				</div>
+			</section>
+
+			<!-- BLUE MANIFESTO -->
+			<section class="checker-blue section">
+				<div class="container center">
+					<h2 class="pixel manifesto-title">SIN CUENTAS. SIN NUBE.<br />SIN LETRAS CHIQUITAS.</h2>
+					<p class="manifesto-copy">Nada que registrar, nada que rastrear. Así de simple.</p>
+					<div class="feature-grid feature-grid--wide">
+						<div class="feature-card">
+							<div class="feature-icon feature-icon--light">
+								<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+									><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-4 4-6 8-6s8 2 8 6"
+									></path><line x1="4" y1="4" x2="20" y2="20"></line></svg
+								>
+							</div>
+							<div class="feature-title pixel feature-title--light">Cero cuentas</div>
+							<div class="feature-copy feature-copy--light">
+								No hay login ni base de datos con tu nombre.
+							</div>
+						</div>
+						<div class="feature-card">
+							<div class="feature-icon feature-icon--light">
+								<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+									><path d="M8 4l12 8-12 8V4z"></path><line x1="2" y1="4" x2="2" y2="20"></line></svg
+								>
+							</div>
+							<div class="feature-title pixel feature-title--light">Anuncios opcionales</div>
+							<div class="feature-copy feature-copy--light">
+								Solo si tú decides ver uno, nunca a mitad de partida.
+							</div>
+						</div>
+						<div class="feature-card">
+							<div class="feature-icon feature-icon--light">
+								<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+									><rect x="5" y="11" width="14" height="9"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"
+									></path></svg
+								>
+							</div>
+							<div class="feature-title pixel feature-title--light">Todo en tu teléfono</div>
+							<div class="feature-copy feature-copy--light">
+								Nada se guarda en servidores nuestros.
+							</div>
+						</div>
+						<div class="feature-card">
+							<div class="feature-icon feature-icon--light">
+								<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+									><path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"></path><path d="M12 8v4l3 2"
+									></path></svg
+								>
+							</div>
+							<div class="feature-title pixel feature-title--light">Pensada para todos</div>
+							<div class="feature-copy feature-copy--light">
+								Alto contraste, texto grande y voz en off.
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- GREEN CTA OVER PHOTO -->
+			<section class="cta-photo">
+				<img src="/images/2-sala-de-espera.png" alt="" />
+				<div class="overlay">
+					<h2 class="pixel cta-title">REÚNE A TU MESA</h2>
+					<p class="cta-copy">
+						Cada quien con su teléfono, todos en la misma red. Así se juega
+						lotería en Pixotería.
+					</p>
+					<span class="btn-pixel btn-pixel--green btn-pixel--static">Próximamente en tu tienda</span>
+				</div>
+			</section>
+
+			<!-- 9 BARAJAS, DE CERCA -->
+			<section class="section" id="barajas">
+				<div class="container">
+					<div class="center">
+						<div class="eyebrow">Nueve mundos, una lotería</div>
+						<h2 class="heading-lg">Las 9 barajas, de cerca</h2>
+						<p class="body-copy centered-copy">
+							54 personajes y objetos por baraja — el clásico incluido, y ocho
+							más para desbloquear.
+						</p>
+					</div>
+
+					<div class="deck-grid">
+						<div class="deck-card pixel-panel">
+							<div class="card-thumb">
+								<img src="/images/cards/perrault-zapato-cristal.png" alt="Carta El Zapato de Cristal, del mazo Cuentos de Perrault" />
+							</div>
+							<div class="deck-text">
+								<div class="deck-name">Cuentos de Perrault</div>
+								<div class="deck-blurb">Cenicienta, Caperucita, El Gato con Botas y más.</div>
+							</div>
+						</div>
+						<div class="deck-card pixel-panel">
+							<div class="card-thumb">
+								<img src="/images/cards/grimm-principe-rana.png" alt="Carta El Príncipe Rana, del mazo Hermanos Grimm" />
+							</div>
+							<div class="deck-text">
+								<div class="deck-name">Hermanos Grimm</div>
+								<div class="deck-blurb">Hansel y Gretel, Blancanieves, Rapunzel y más.</div>
+							</div>
+						</div>
+						<div class="deck-card pixel-panel">
+							<div class="card-thumb">
+								<img src="/images/cards/carroll-jardin-rosas.png" alt="Carta El Jardín de Rosas, del mazo País de las Maravillas" />
+							</div>
+							<div class="deck-text">
+								<div class="deck-name">País de las Maravillas</div>
+								<div class="deck-blurb">El Conejo Blanco, el Sombrerero Loco, el Gato de Cheshire.</div>
+							</div>
+						</div>
+						<div class="deck-card pixel-panel">
+							<div class="card-thumb">
+								<img src="/images/cards/piratas-kraken.png" alt="Carta El Kraken, del mazo Piratas" />
+							</div>
+							<div class="deck-text">
+								<div class="deck-name">Piratas</div>
+								<div class="deck-blurb">El capitán, el kraken, el mapa del tesoro y más.</div>
+							</div>
+						</div>
+						<div class="deck-card pixel-panel">
+							<div class="card-thumb">
+								<img src="/images/cards/griego-zeus.png" alt="Carta Zeus, del mazo Mitología Griega" />
+							</div>
+							<div class="deck-text">
+								<div class="deck-name">Mitología Griega</div>
+								<div class="deck-blurb">Zeus, Atenea, Medusa, el Minotauro y más.</div>
+							</div>
+						</div>
+						<div class="deck-card pixel-panel">
+							<div class="card-thumb">
+								<img src="/images/cards/muertos-fruta-temporada.png" alt="Carta La Fruta de Temporada, del mazo Día de Muertos" />
+							</div>
+							<div class="deck-text">
+								<div class="deck-name">Día de Muertos</div>
+								<div class="deck-blurb">La Catrina, el Xoloitzcuintle, la Calaverita de Azúcar.</div>
+							</div>
+						</div>
+						<div class="deck-card pixel-panel">
+							<div class="card-thumb">
+								<img src="/images/cards/cyberpunk-androide.png" alt="Carta El Androide, del mazo Cyberpunk" />
+							</div>
+							<div class="deck-text">
+								<div class="deck-name">Cyberpunk</div>
+								<div class="deck-blurb">El hacker, el androide, la megaciudad y más.</div>
+							</div>
+						</div>
+						<div class="deck-card pixel-panel">
+							<div class="card-thumb">
+								<img src="/images/cards/terror-muneca.png" alt="Carta La Muñeca Embrujada, del mazo Terror Clásico" />
+							</div>
+							<div class="deck-text">
+								<div class="deck-name">Terror Clásico</div>
+								<div class="deck-blurb">El vampiro, el hombre lobo, la casa embrujada y más.</div>
+							</div>
+						</div>
+						<div class="deck-card pixel-panel">
+							<div class="card-thumb">
+								<img src="/images/cards/nordico-thor.png" alt="Carta Thor, del mazo Mitología Nórdica" />
+							</div>
+							<div class="deck-text">
+								<div class="deck-name">Mitología Nórdica</div>
+								<div class="deck-blurb">Odín, Thor, Loki, Fenrir y más.</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- GALERÍA -->
+			<section class="section checker-bg gallery-section">
+				<div class="container">
+					<div class="center">
+						<div class="eyebrow eyebrow--gold">Así se ve</div>
+						<h2 class="heading-lg heading-lg--light">Directo del teléfono</h2>
+					</div>
+					<div class="card-fan">
+						<div class="fan-item fan-item--left">
+							<div class="iphone-frame">
+								<div class="iphone-notch"></div>
+								<div class="iphone-btn iphone-btn--power"></div>
+								<div class="iphone-btn iphone-btn--vol1"></div>
+								<div class="iphone-btn iphone-btn--vol2"></div>
+								<div class="iphone-screen">
+									<img src="/images/1-menu.png" alt="Menú principal de Pixotería" />
+								</div>
+							</div>
+						</div>
+						<div class="fan-item fan-item--center">
+							<div class="iphone-frame">
+								<div class="iphone-notch"></div>
+								<div class="iphone-btn iphone-btn--power"></div>
+								<div class="iphone-btn iphone-btn--vol1"></div>
+								<div class="iphone-btn iphone-btn--vol2"></div>
+								<div class="iphone-screen">
+									<img src="/images/2-sala-de-espera.png" alt="Sala de espera antes de la partida" />
+								</div>
+							</div>
+						</div>
+						<div class="fan-item fan-item--right">
+							<div class="iphone-frame">
+								<div class="iphone-notch"></div>
+								<div class="iphone-btn iphone-btn--power"></div>
+								<div class="iphone-btn iphone-btn--vol1"></div>
+								<div class="iphone-btn iphone-btn--vol2"></div>
+								<div class="iphone-screen">
+									<img src="/images/3-mazo-muertos.png" alt="Partida con la baraja Día de Muertos" />
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="phone-caption fan-caption">Menú · Sala de espera · Día de Muertos</div>
+				</div>
+			</section>
+
+			<!-- HECHO POR -->
+			<section class="section made-by">
+				<div class="container narrow center">
+					<div class="card-thumb made-by-card">
+						<img src="/images/cards/hero-fan.jpg" alt="Abanico de cartas de lotería de Pixotería" />
+					</div>
+					<div class="eyebrow">De dónde sale esto</div>
+					<h2 class="heading-lg">Hecha por alguien a quien le gusta la lotería de verdad</h2>
+					<p class="body-copy centered-copy">
+						Pixotería nació de las ganas de jugar lotería con la familia sin
+						depender de una impresora ni de una app que pida tu correo para
+						cantar "El Borracho". Nueve barajas después, sigue siendo eso: un
+						juego de mesa que cabe en el bolsillo.
+					</p>
+				</div>
+			</section>
+
+			<!-- PRIVACIDAD -->
+			<section class="section privacy-section" id="privacidad">
+				<div class="container narrow">
+					<div class="eyebrow">Antes de que preguntes</div>
+					<h2 class="heading-lg">Política de privacidad</h2>
+
+					<div class="privacy-tabs">
+						<input type="radio" name="privacy-lang" id="tab-es" checked />
+						<input type="radio" name="privacy-lang" id="tab-en" />
+						<div class="tab-labels">
+							<label for="tab-es">Español</label>
+							<label for="tab-en">English</label>
+						</div>
+						<div class="panels">
+							<div class="tab-panel" id="panel-es">
+								<p class="body-copy wide-copy">
+									<strong
+										>Pixotería no recolecta, no almacena en servidores ni
+										comparte datos personales para jugar.</strong
+									> No hay cuentas ni registro. Tu nombre de jugador se queda en
+									tu teléfono y solo lo ven los demás en esa partida.
+								</p>
+								<ul class="privacy-list">
+									<li>
+										<span class="dot"></span>Publicidad opcional: si decides ver
+										un anuncio para rentar un mazo, Google AdMob puede procesar
+										tu identificador de publicidad — solo mientras se muestra el
+										anuncio.
+									</li>
+									<li>
+										<span class="dot"></span>Compras: usamos RevenueCat para procesar
+										la compra de un mazo. Recibe tu historial de compras ligado a
+										un identificador anónimo de tu dispositivo, nunca a tu nombre
+										o correo — solo para saber qué mazo desbloquear.
+									</li>
+									<li>
+										<span class="dot"></span>Todo lo demás — tablas, cartas cantadas,
+										nombres de jugador — viaja solo entre los teléfonos de tu red
+										WiFi local, y nunca se guarda después de la partida.
+									</li>
+								</ul>
+								<p class="policy-link">
+									Política completa en español e inglés: <a
+										href="https://thegeistgamer.github.io/loteria-privacidad/"
+										target="_blank"
+										rel="noopener">thegeistgamer.github.io/loteria-privacidad</a
+									>
+								</p>
+							</div>
+							<div class="tab-panel" id="panel-en">
+								<p class="body-copy wide-copy">
+									<strong
+										>Pixotería does not collect, store on servers, or share
+										personal data to play.</strong
+									> There are no accounts and no sign-up. Your player name stays
+									on your phone and is only shown to others in that game.
+								</p>
+								<ul class="privacy-list">
+									<li>
+										<span class="dot"></span>Optional advertising: if you choose
+										to watch an ad to rent a deck, Google AdMob may process your
+										advertising identifier — only while the ad is shown.
+									</li>
+									<li>
+										<span class="dot"></span>Purchases: we use RevenueCat to process
+										buying a deck. It receives your purchase history tied to an
+										anonymous device identifier, never your name or email — only
+										to know which deck to unlock.
+									</li>
+									<li>
+										<span class="dot"></span>Everything else — boards, called cards,
+										player names — travels only between the phones on your local
+										WiFi network, and is never stored after the game.
+									</li>
+								</ul>
+								<p class="policy-link">
+									Full policy in Spanish and English: <a
+										href="https://thegeistgamer.github.io/loteria-privacidad/"
+										target="_blank"
+										rel="noopener">thegeistgamer.github.io/loteria-privacidad</a
+									>
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<p class="contact-line">
+						¿Dudas sobre esto? Escríbenos a <a href="mailto:contacto@infinitydev.agency"
+							>contacto@infinitydev.agency</a
+						>
+					</p>
+				</div>
+			</section>
+
+			<!-- FOOTER -->
+			<footer class="checker-bg footer">
+				<div class="container footer-row">
+					<div class="pixel footer-brand">PIXOTERÍA © 2026</div>
+					<a href="https://thegeistgamer.github.io/loteria-privacidad/" target="_blank" rel="noopener" class="footer-link">
+						Política de privacidad completa
+					</a>
+				</div>
+			</footer>
+		</div>
+	</body>
+</html>
+
+<style is:global>
+	@font-face {
+		font-family: 'BoldPixels';
+		src: url('/fonts/BoldPixels.ttf') format('truetype');
+		font-weight: 400;
+		font-style: normal;
+		font-display: swap;
+	}
+	* {
+		box-sizing: border-box;
+	}
+	html,
+	body {
+		margin: 0;
+		padding: 0;
+	}
+	body {
+		font-family: 'Archivo', system-ui, sans-serif;
+		background: #fbf3e4;
+		color: #3f2832;
+		-webkit-font-smoothing: antialiased;
+	}
+	a {
+		color: #9e2835;
+		text-decoration: underline;
+	}
+	a:hover {
+		color: #6b1926;
+	}
+	img {
+		display: block;
+		max-width: 100%;
+	}
+	.pixel {
+		font-family: 'BoldPixels', 'Archivo', system-ui, sans-serif;
+		letter-spacing: 0.02em;
+	}
+
+	.pixel-panel {
+		border: 4px solid #3f2832;
+		box-shadow: inset 0 0 0 2px #fbf3e4, 6px 6px 0 0 #3f2832;
+	}
+	.pixel-panel--gold {
+		border: 4px solid #f77622;
+		box-shadow: inset 0 0 0 2px #fff9dc, 6px 6px 0 0 #8f3e13;
+	}
+	.made-by-card {
+		width: 140px;
+		margin: 0 auto 20px;
+	}
+
+	.btn-pixel {
+		font-family: 'BoldPixels', 'Archivo', system-ui, sans-serif;
+		font-size: 17px;
+		color: #fbf3e4;
+		background: #9e2835;
+		border: 4px solid #3f2832;
+		box-shadow: 4px 4px 0 0 #3f2832;
+		padding: 14px 22px;
+		display: inline-flex;
+		align-items: center;
+		gap: 10px;
+		cursor: pointer;
+		text-decoration: none;
+		transition:
+			transform 0.05s ease-out,
+			box-shadow 0.05s ease-out;
+	}
+	.btn-pixel:hover {
+		transform: translate(-2px, -2px);
+		box-shadow: 6px 6px 0 0 #3f2832;
+		color: #fff9dc;
+	}
+	.btn-pixel:active {
+		transform: translate(2px, 2px);
+		box-shadow: 1px 1px 0 0 #3f2832;
+	}
+	.btn-pixel--static {
+		cursor: default;
+		opacity: 0.92;
+	}
+	.btn-pixel--static:hover {
+		transform: none;
+		box-shadow: 4px 4px 0 0 #3f2832;
+	}
+	.btn-pixel--green {
+		background: #3e8948;
+	}
+	.btn-pixel--play {
+		background: #265c42;
+	}
+	.btn-pixel--gold-cta {
+		background: #feae34;
+		color: #3f2832;
+		border-color: #2a1a22;
+	}
+
+	.checker-bg {
+		background-color: #3f2832;
+		background-image:
+			linear-gradient(45deg, #4e3229 25%, transparent 25%),
+			linear-gradient(-45deg, #4e3229 25%, transparent 25%),
+			linear-gradient(45deg, transparent 75%, #4e3229 75%),
+			linear-gradient(-45deg, transparent 75%, #4e3229 75%);
+		background-size: 16px 16px;
+		background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+	}
+	.checker-red {
+		background-color: #6b1926;
+		background-image:
+			linear-gradient(45deg, #8a2130 25%, transparent 25%),
+			linear-gradient(-45deg, #8a2130 25%, transparent 25%),
+			linear-gradient(45deg, transparent 75%, #8a2130 75%),
+			linear-gradient(-45deg, transparent 75%, #8a2130 75%);
+		background-size: 16px 16px;
+		background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+	}
+	.checker-blue {
+		background-color: #0095e9;
+		background-image:
+			linear-gradient(45deg, #1ba6f5 25%, transparent 25%),
+			linear-gradient(-45deg, #1ba6f5 25%, transparent 25%),
+			linear-gradient(45deg, transparent 75%, #1ba6f5 75%),
+			linear-gradient(-45deg, transparent 75%, #1ba6f5 75%);
+		background-size: 16px 16px;
+		background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+	}
+	.checker-gold {
+		background-color: #feae34;
+		background-image:
+			linear-gradient(45deg, #fec547 25%, transparent 25%),
+			linear-gradient(-45deg, #fec547 25%, transparent 25%),
+			linear-gradient(45deg, transparent 75%, #fec547 75%),
+			linear-gradient(-45deg, transparent 75%, #fec547 75%);
+		background-size: 16px 16px;
+		background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+	}
+
+	.section {
+		padding: 72px 24px;
+	}
+	.container {
+		max-width: 1080px;
+		margin: 0 auto;
+	}
+	.container.narrow {
+		max-width: 760px;
+	}
+	.center {
+		text-align: center;
+	}
+	.eyebrow {
+		font-family: 'BoldPixels', 'Archivo', system-ui, sans-serif;
+		font-size: 18px;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: #c4561a;
+	}
+	.eyebrow--light {
+		color: #fec547;
+	}
+	.eyebrow--gold {
+		color: #fec547;
+	}
+	.heading-lg {
+		font-family: 'BoldPixels', 'Archivo', system-ui, sans-serif;
+		font-size: 36px;
+		line-height: 1.25;
+		margin: 8px 0 16px;
+		color: #3f2832;
+	}
+	.heading-lg--light {
+		color: #fee761;
+	}
+	.body-copy {
+		font-size: 19px;
+		line-height: 1.6;
+		color: #4e3229;
+		max-width: 640px;
+	}
+	.centered-copy {
+		margin: 0 auto;
+	}
+	.wide-copy {
+		max-width: none;
+	}
+
+	.topbar {
+		padding: 14px 24px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		border-bottom: 4px solid #2a1a22;
+	}
+	.wordmark {
+		font-size: 18px;
+		color: #fee761;
+	}
+	.toplink {
+		font-size: 18px;
+		color: #f6ca9f;
+		text-decoration: none;
+	}
+
+	.hero {
+		padding-top: 72px;
+		padding-bottom: 56px;
+	}
+	.hero-grid {
+		display: grid;
+		grid-template-columns: 1.1fr 1fr;
+		gap: 40px;
+		align-items: center;
+	}
+	.hero-title {
+		font-size: 54px;
+		line-height: 1.08;
+		margin: 10px 0 18px;
+		color: #3f2832;
+	}
+	.hero-copy {
+		font-size: 21px;
+		line-height: 1.55;
+		color: #4e3229;
+		max-width: 480px;
+		margin: 0 0 28px;
+	}
+	.hero-buttons {
+		display: flex;
+		gap: 16px;
+		flex-wrap: wrap;
+	}
+	.hero-tag {
+		margin-top: 22px;
+		font-size: 16px;
+		color: #6b4436;
+	}
+
+	.hero-scene {
+		width: 100%;
+		max-width: 460px;
+		margin: 0 auto;
+	}
+	.hero-scene-img {
+		width: 100%;
+		border-radius: 16px;
+		border: 4px solid #3f2832;
+		box-shadow: 8px 8px 0 0 #8f3e13;
+	}
+
+	.badge-section {
+		padding-top: 48px;
+		padding-bottom: 56px;
+		border-top: 4px solid #2a1a22;
+		border-bottom: 4px solid #2a1a22;
+	}
+	.badge-heading {
+		font-size: 34px;
+		color: #3f2832;
+		margin: 0;
+	}
+	.badge-strip-wrap {
+		display: flex;
+		align-items: center;
+		gap: 16px;
+		margin-top: 40px;
+	}
+	.badge-arrow {
+		flex: 0 0 auto;
+		width: 40px;
+		height: 40px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: #3f2832;
+		color: #fee761;
+		border: 3px solid #2a1a22;
+	}
+	.badge-strip {
+		display: flex;
+		gap: 16px;
+		overflow-x: auto;
+		padding: 8px 4px;
+		scroll-snap-type: x mandatory;
+	}
+	.badge-item {
+		flex: 0 0 auto;
+		width: 168px;
+		background: #fbf3e4;
+		border: 4px solid #3f2832;
+		box-shadow: 5px 5px 0 0 #8f3e13;
+		padding: 16px 14px;
+		text-align: center;
+		scroll-snap-align: start;
+	}
+	.badge-item .card-thumb {
+		width: 92px;
+		margin: 0 auto 12px;
+	}
+	.badge-item .deck-name {
+		font-size: 18px;
+	}
+	.badge-item .deck-desc {
+		font-size: 13px;
+		line-height: 1.45;
+		color: #6b4436;
+		margin-top: 6px;
+	}
+
+	/* ── Card thumbnail: real card art, or a styled placeholder ──────── */
+	.card-thumb {
+		width: 100px;
+		aspect-ratio: 3 / 4;
+		flex-shrink: 0;
+		border-radius: 12px;
+		border: 3px solid #3f2832;
+		box-shadow: 3px 3px 0 0 #3f2832;
+		overflow: hidden;
+		background: #2a1a22;
+	}
+	.card-thumb img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		image-rendering: pixelated;
+	}
+	.deck-grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 24px;
+		margin-top: 40px;
+	}
+	.deck-card {
+		background: #fbf3e4;
+		padding: 18px;
+		display: flex;
+		flex-direction: row;
+		align-items: flex-start;
+		gap: 16px;
+	}
+	.deck-text {
+		display: flex;
+		flex-direction: column;
+		gap: 6px;
+		flex: 1;
+	}
+	.deck-name {
+		font-family: 'BoldPixels', 'Archivo', system-ui, sans-serif;
+		font-size: 18px;
+		color: #3f2832;
+	}
+	.deck-blurb {
+		font-size: 16px;
+		line-height: 1.5;
+		color: #6b4436;
+	}
+
+	.feature-grid {
+		display: grid;
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		gap: 20px;
+		margin-top: 40px;
+	}
+	.feature-grid--wide {
+		max-width: 900px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.feature-card {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+	}
+	.feature-icon {
+		width: 40px;
+		height: 40px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: #3e8948;
+	}
+	.feature-icon--light {
+		color: #fee761;
+	}
+	.feature-title {
+		font-family: 'BoldPixels', 'Archivo', system-ui, sans-serif;
+		font-size: 18px;
+	}
+	.feature-title--light {
+		color: #fbf3e4;
+	}
+	.feature-copy {
+		font-size: 16px;
+		line-height: 1.55;
+		color: #6b4436;
+	}
+	.feature-copy--light {
+		color: #dceefb;
+	}
+
+	.showcase-split {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 48px;
+		align-items: center;
+	}
+	.showcase-shot {
+		background: #2a1a22;
+		border: 4px solid #2a1a22;
+		box-shadow: 8px 8px 0 0 #4d0611;
+		padding: 8px;
+		height: 520px;
+		overflow: hidden;
+	}
+	.showcase-shot img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: top center;
+	}
+	.showcase-title {
+		font-size: 34px;
+		color: #fbf3e4;
+		margin: 10px 0 16px;
+	}
+	.showcase-copy {
+		font-size: 18px;
+		line-height: 1.6;
+		color: #f2909c;
+		max-width: 420px;
+		margin: 0 0 24px;
+	}
+
+	.manifesto-title {
+		font-size: 34px;
+		line-height: 1.4;
+		color: #fbf3e4;
+		margin: 0 0 8px;
+		text-shadow: 3px 3px 0 #05467a;
+	}
+	.manifesto-copy {
+		font-size: 18px;
+		color: #e0f2fe;
+		max-width: 520px;
+		margin: 12px auto 0;
+	}
+
+	.cta-photo {
+		position: relative;
+		overflow: hidden;
+		border-top: 4px solid #2a1a22;
+		border-bottom: 4px solid #2a1a22;
+	}
+	.cta-photo img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		position: absolute;
+		inset: 0;
+		filter: brightness(0.55);
+	}
+	.cta-photo .overlay {
+		position: relative;
+		z-index: 1;
+		text-align: center;
+		padding: 96px 24px;
+	}
+	.cta-title {
+		font-size: 36px;
+		color: #fbf3e4;
+		margin: 0 0 12px;
+		text-shadow: 3px 3px 0 #092414;
+	}
+	.cta-copy {
+		font-size: 19px;
+		color: #d2f2df;
+		max-width: 480px;
+		margin: 0 auto 28px;
+	}
+
+	.gallery-section {
+		padding-top: 64px;
+		padding-bottom: 72px;
+	}
+	.card-fan {
+		position: relative;
+		height: 480px;
+		margin-top: 56px;
+		display: flex;
+		justify-content: center;
+	}
+	.fan-item {
+		position: absolute;
+		top: 10px;
+	}
+	.fan-item--left {
+		transform: rotate(-11deg) translate(-96px, 14px);
+		z-index: 1;
+	}
+	.fan-item--center {
+		transform: rotate(0deg);
+		z-index: 3;
+	}
+	.fan-item--right {
+		transform: rotate(11deg) translate(96px, 14px);
+		z-index: 2;
+	}
+	.fan-caption {
+		margin-top: 12px;
+	}
+	.iphone-frame {
+		position: relative;
+		width: 210px;
+		background: #1c1c1e;
+		border-radius: 42px;
+		padding: 14px 9px;
+		box-shadow:
+			0 16px 32px rgba(0, 0, 0, 0.4),
+			inset 0 0 0 2px #000;
+	}
+	.iphone-screen {
+		border-radius: 28px;
+		overflow: hidden;
+		background: #000;
+		position: relative;
+	}
+	.iphone-screen img {
+		width: 100%;
+		display: block;
+	}
+	.iphone-notch {
+		position: absolute;
+		top: 14px;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 84px;
+		height: 24px;
+		background: #1c1c1e;
+		border-radius: 14px;
+		z-index: 2;
+	}
+	.iphone-btn {
+		position: absolute;
+		background: #1c1c1e;
+		border-radius: 2px;
+	}
+	.iphone-btn--power {
+		right: -3px;
+		top: 110px;
+		width: 3px;
+		height: 60px;
+	}
+	.iphone-btn--vol1 {
+		left: -3px;
+		top: 90px;
+		width: 3px;
+		height: 32px;
+	}
+	.iphone-btn--vol2 {
+		left: -3px;
+		top: 132px;
+		width: 3px;
+		height: 32px;
+	}
+	.phone-caption {
+		font-family: 'BoldPixels', 'Archivo', system-ui, sans-serif;
+		font-size: 18px;
+		color: #fee761;
+		text-align: center;
+		margin-top: 14px;
+	}
+
+	.made-by {
+		padding-top: 64px;
+		padding-bottom: 64px;
+	}
+
+	.privacy-section {
+		background: #ead4aa;
+		border-top: 4px solid #3f2832;
+		border-bottom: 4px solid #3f2832;
+	}
+	.privacy-tabs input {
+		position: absolute;
+		opacity: 0;
+		pointer-events: none;
+	}
+	.privacy-tabs .tab-labels {
+		display: flex;
+		gap: 8px;
+		margin-bottom: 24px;
+	}
+	.privacy-tabs .tab-labels label {
+		font-family: 'BoldPixels', 'Archivo', system-ui, sans-serif;
+		font-size: 18px;
+		padding: 10px 18px;
+		border: 3px solid #3f2832;
+		background: #ead4aa;
+		cursor: pointer;
+		color: #3f2832;
+	}
+	.privacy-tabs .tab-panel {
+		display: none;
+	}
+	#tab-es:checked ~ .tab-labels label[for='tab-es'],
+	#tab-en:checked ~ .tab-labels label[for='tab-en'] {
+		background: #9e2835;
+		color: #fbf3e4;
+	}
+	#tab-es:checked ~ .panels #panel-es {
+		display: block;
+	}
+	#tab-en:checked ~ .panels #panel-en {
+		display: block;
+	}
+
+	.privacy-list {
+		list-style: none;
+		margin: 20px 0 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 14px;
+	}
+	.privacy-list li {
+		display: flex;
+		gap: 14px;
+		align-items: flex-start;
+		font-size: 17px;
+		line-height: 1.6;
+		color: #4e3229;
+	}
+	.privacy-list .dot {
+		flex: 0 0 auto;
+		width: 10px;
+		height: 10px;
+		margin-top: 6px;
+		background: #3e8948;
+		border: 2px solid #3f2832;
+	}
+	.policy-link {
+		margin-top: 20px;
+		font-size: 17px;
+	}
+	.contact-line {
+		margin-top: 32px;
+		font-size: 17px;
+		color: #6b4436;
+	}
+
+	.footer {
+		padding: 32px 24px;
+		border-top: 4px solid #2a1a22;
+	}
+	.footer-row {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 12px;
+		align-items: center;
+		justify-content: space-between;
+	}
+	.footer-brand {
+		font-size: 18px;
+		color: #f6ca9f;
+	}
+	.footer-link {
+		color: #fec547;
+		font-size: 16px;
+	}
+
+	@media (max-width: 860px) {
+		.hero-grid {
+			grid-template-columns: 1fr;
+		}
+		.deck-grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+		.feature-grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+		.showcase-split {
+			grid-template-columns: 1fr;
+		}
+	}
+	@media (max-width: 560px) {
+		.deck-grid {
+			grid-template-columns: 1fr;
+		}
+		.feature-grid {
+			grid-template-columns: 1fr;
+		}
+		.heading-lg {
+			font-size: 32px;
+		}
+		.section {
+			padding: 56px 18px;
+		}
+		.cta-photo .overlay {
+			padding: 64px 20px;
+		}
+		.hero-title {
+			font-size: 40px;
+		}
+		.deck-card {
+			flex-direction: column;
+			align-items: center;
+			text-align: center;
+		}
+	}
+</style>
