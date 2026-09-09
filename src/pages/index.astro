@@ -29,13 +29,20 @@ export const prerender = true;
 	</head>
 	<body>
 		<div class="page">
-			<div class="checker-bg topbar">
-				<div class="pixel wordmark">PIXOTERÍA</div>
-				<a href="#privacidad" class="pixel toplink">Privacidad</a>
-			</div>
+			<header class="checker-bg topbar" id="topbar">
+				<div class="topbar-inner">
+					<a href="#inicio" class="pixel wordmark">PIXOTERÍA</a>
+					<nav class="topnav">
+						<a href="#mazos" class="pixel toplink">Mazos</a>
+						<a href="#barajas" class="pixel toplink">Barajas</a>
+						<a href="#capturas" class="pixel toplink">Capturas</a>
+						<a href="#privacidad" class="pixel toplink">Privacidad</a>
+					</nav>
+				</div>
+			</header>
 
 			<!-- HERO -->
-			<section class="section hero">
+			<section class="section hero" id="inicio">
 				<div class="container hero-grid">
 					<div>
 						<div class="eyebrow">Lotería mexicana · multijugador local</div>
@@ -85,7 +92,7 @@ export const prerender = true;
 			</section>
 
 			<!-- GOLD BADGE STRIP -->
-			<section class="checker-gold section badge-section">
+			<section class="checker-gold section badge-section" id="mazos">
 				<div class="container">
 					<div class="center">
 						<h2 class="pixel badge-heading">ELIGE TU MAZO</h2>
@@ -197,10 +204,7 @@ export const prerender = true;
 					<div class="feature-grid feature-grid--wide">
 						<div class="feature-card">
 							<div class="feature-icon feature-icon--light">
-								<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-									><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-4 4-6 8-6s8 2 8 6"
-									></path><line x1="4" y1="4" x2="20" y2="20"></line></svg
-								>
+								<svg width="32" height="32" viewBox="0 0 32 32"><path d="M30.48 16.76H32v12.19h-1.52Z" fill="currentColor"></path><path d="M28.95 28.95h1.53v1.53h-1.53Z" fill="currentColor"></path><path d="M28.95 15.24V3.05h-1.52V1.52h-1.52V0h-7.62v1.52h-1.53v1.53h-1.52v12.19h-1.52v1.52h16.76v-1.52Zm-3.04 0h-7.62V4.57h1.52V3.05h4.57v1.52h1.53Z" fill="currentColor"></path><path d="M15.24 30.48h13.71V32H15.24Z" fill="currentColor"></path><path d="M24.38 22.86h1.53v1.52h-1.53Z" fill="currentColor"></path><path d="M24.38 19.81h1.53v1.52h-1.53Z" fill="currentColor"></path><path d="M19.81 24.38h4.57v1.52h-4.57Z" fill="currentColor"></path><path d="M18.29 22.86h1.52v1.52h-1.52Z" fill="currentColor"></path><path d="M18.29 19.81h1.52v1.52h-1.52Z" fill="currentColor"></path><path d="M13.72 28.95h1.52v1.53h-1.52Z" fill="currentColor"></path><path d="M12.19 16.76h1.53v4.57h-1.53Z" fill="currentColor"></path><path d="M10.67 22.86h1.52v6.09h-1.52Z" fill="currentColor"></path><path d="M9.15 28.95h1.52v1.53H9.15Z" fill="currentColor"></path><path d="M9.15 21.33h1.52v1.53H9.15Z" fill="currentColor"></path><path d="M7.62 6.09h1.53v15.24H7.62Z" fill="currentColor"></path><path d="M3.05 30.48h6.1V32h-6.1Z" fill="currentColor"></path><path d="m7.62 22.86 -3.05 0 0 1.52 -1.52 0 0 3.05 1.52 0 0 1.52 3.05 0 0 -1.52 1.53 0 0 -3.05 -1.53 0 0 -1.52z" fill="currentColor"></path><path d="M4.57 4.57h3.05v1.52H4.57Z" fill="currentColor"></path><path d="m4.57 16.76 -3.04 0 0 -1.52 3.04 0 0 -4.57 -3.04 0 0 -1.53 3.04 0 0 -3.05 -1.52 0 0 1.53 -3.05 0 0 4.57 3.05 0 0 1.52 -3.05 0 0 4.57 3.05 0 0 3.05 1.52 0 0 -4.57z" fill="currentColor"></path><path d="M1.53 28.95h1.52v1.53H1.53Z" fill="currentColor"></path><path d="M1.53 21.33h1.52v1.53H1.53Z" fill="currentColor"></path><path d="M0 22.86h1.53v6.09H0Z" fill="currentColor"></path></svg>
 							</div>
 							<div class="feature-title pixel feature-title--light">Cero cuentas</div>
 							<div class="feature-copy feature-copy--light">
@@ -209,9 +213,7 @@ export const prerender = true;
 						</div>
 						<div class="feature-card">
 							<div class="feature-icon feature-icon--light">
-								<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-									><path d="M8 4l12 8-12 8V4z"></path><line x1="2" y1="4" x2="2" y2="20"></line></svg
-								>
+								<svg width="32" height="32" viewBox="0 0 32 32"><path d="M30.48 7.62H32v10.66h-1.52Z" fill="currentColor"></path><path d="M28.95 18.28h1.53v1.53h-1.53Z" fill="currentColor"></path><path d="M28.95 6.09h1.53v1.53h-1.53Z" fill="currentColor"></path><path d="M19.81 19.81h9.14v1.52h-9.14Z" fill="currentColor"></path><path d="M25.91 10.67h1.52v4.57h-1.52Z" fill="currentColor"></path><path d="M19.81 9.14h6.1v1.53h-6.1Z" fill="currentColor"></path><path d="M19.81 15.24h6.1v1.52h-6.1Z" fill="currentColor"></path><path d="M19.81 4.57h9.14v1.52h-9.14Z" fill="currentColor"></path><path d="M18.29 16.76h1.52v3.05h-1.52Z" fill="currentColor"></path><path d="M18.29 6.09h1.52v3.05h-1.52Z" fill="currentColor"></path><path d="M15.24 21.33h1.52v3.05h-1.52Z" fill="currentColor"></path><path d="M13.72 24.38h1.52v1.52h-1.52Z" fill="currentColor"></path><path d="M12.19 19.81h3.05v1.52h-3.05Z" fill="currentColor"></path><path d="M13.72 1.52h1.52v4.57h-1.52Z" fill="currentColor"></path><path d="M12.19 25.9h1.53v1.53h-1.53Z" fill="currentColor"></path><path d="M10.67 27.43h1.52v1.52h-1.52Z" fill="currentColor"></path><path d="M10.67 21.33h1.52v1.53h-1.52Z" fill="currentColor"></path><path d="M9.15 22.86h1.52v1.52H9.15Z" fill="currentColor"></path><path d="M9.15 15.24h1.52v3.04H9.15Z" fill="currentColor"></path><path d="M4.57 28.95h6.1v1.53h-6.1Z" fill="currentColor"></path><path d="M7.62 18.28h1.53v1.53H7.62Z" fill="currentColor"></path><path d="M6.1 13.71h3.05v1.53H6.1Z" fill="currentColor"></path><path d="M6.1 24.38h3.05v1.52H6.1Z" fill="currentColor"></path><path d="M6.1 19.81h1.52v1.52H6.1Z" fill="currentColor"></path><path d="M4.57 9.14h4.58v1.53H4.57Z" fill="currentColor"></path><path d="m4.57 3.05 3.05 0 0 3.04 3.05 0 0 3.05 1.52 0 0 -4.57 -3.04 0 0 -3.05 -4.58 0 0 1.53z" fill="currentColor"></path><path d="M4.57 21.33H6.1v3.05H4.57Z" fill="currentColor"></path><path d="M4.57 15.24H6.1v1.52H4.57Z" fill="currentColor"></path><path d="M3.05 27.43h1.52v1.52H3.05Z" fill="currentColor"></path><path d="M3.05 16.76h1.52v1.52H3.05Z" fill="currentColor"></path><path d="M1.53 25.9h1.52v1.53H1.53Z" fill="currentColor"></path><path d="M1.53 18.28h1.52v1.53H1.53Z" fill="currentColor"></path><path d="M0 19.81h1.53v6.09H0Z" fill="currentColor"></path></svg>
 							</div>
 							<div class="feature-title pixel feature-title--light">Anuncios opcionales</div>
 							<div class="feature-copy feature-copy--light">
@@ -220,10 +222,7 @@ export const prerender = true;
 						</div>
 						<div class="feature-card">
 							<div class="feature-icon feature-icon--light">
-								<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-									><rect x="5" y="11" width="14" height="9"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"
-									></path></svg
-								>
+								<svg width="32" height="32" viewBox="0 0 32 32"><path d="M6.855 1.52h-1.52v28.96h1.52V32h18.29v-1.52h1.52V1.52h-1.52V0H6.855Zm9.15 0h3.04v1.53h-3.04Zm-3.05 0h1.52v1.53h-1.52Zm7.62 3.05V3.05h4.57v25.9H6.855V3.05h4.57v1.52Z" fill="currentColor"></path><path d="M22.095 22.86h1.52v3.05h-1.52Z" fill="currentColor"></path><path d="M22.095 7.62h1.52v3.05h-1.52Z" fill="currentColor"></path><path d="M20.575 15.24h1.52v4.57h-1.52Z" fill="currentColor"></path><path d="M20.575 12.19h1.52v1.52h-1.52Z" fill="currentColor"></path><path d="M19.045 6.1h3.05v1.52h-3.05Z" fill="currentColor"></path><path d="M19.045 25.91h3.05v1.52h-3.05Z" fill="currentColor"></path><path d="M19.045 10.67h1.53v1.52h-1.53Z" fill="currentColor"></path><path d="M17.525 18.29h1.52v4.57h-1.52Z" fill="currentColor"></path><path d="M17.525 13.71h1.52v3.05h-1.52Z" fill="currentColor"></path><path d="M16.005 9.14h3.04v1.53h-3.04Z" fill="currentColor"></path><path d="M12.955 22.86h4.57v1.52h-4.57Z" fill="currentColor"></path><path d="M14.475 18.29h1.53v1.52h-1.53Z" fill="currentColor"></path><path d="M14.475 12.19h3.05v1.52h-3.05Z" fill="currentColor"></path><path d="M12.955 13.71h1.52v4.58h-1.52Z" fill="currentColor"></path><path d="M12.955 9.14h1.52v1.53h-1.52Z" fill="currentColor"></path><path d="M11.425 21.33h1.53v1.53h-1.53Z" fill="currentColor"></path><path d="M11.425 10.67h1.53v1.52h-1.53Z" fill="currentColor"></path><path d="M9.905 6.1h3.05v1.52h-3.05Z" fill="currentColor"></path><path d="M9.905 25.91h3.05v1.52h-3.05Z" fill="currentColor"></path><path d="M9.905 19.81h1.52v1.52h-1.52Z" fill="currentColor"></path><path d="M9.905 12.19h1.52v6.1h-1.52Z" fill="currentColor"></path><path d="M8.385 22.86h1.52v3.05h-1.52Z" fill="currentColor"></path><path d="M8.385 7.62h1.52v3.05h-1.52Z" fill="currentColor"></path></svg>
 							</div>
 							<div class="feature-title pixel feature-title--light">Todo en tu teléfono</div>
 							<div class="feature-copy feature-copy--light">
@@ -232,10 +231,7 @@ export const prerender = true;
 						</div>
 						<div class="feature-card">
 							<div class="feature-icon feature-icon--light">
-								<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-									><path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"></path><path d="M12 8v4l3 2"
-									></path></svg
-								>
+								<svg width="32" height="32" viewBox="0 0 32 32"><path d="M30.48 18.285H32v1.53h-1.52Z" fill="currentColor"></path><path d="M27.43 16.765h3.05v1.52h-3.05Z" fill="currentColor"></path><path d="M27.43 13.715h1.52v1.53h-1.52Z" fill="currentColor"></path><path d="m22.86 15.245 0 -3.05 -1.52 0 0 -1.53 -1.53 0 0 -3.04 1.53 0 0 -1.53 6.09 0 0 1.53 1.52 0 0 6.09 1.53 0 0 -9.14 -1.53 0 0 -1.53 -1.52 0 0 -1.52 -6.09 0 0 1.52 -1.53 0 0 1.53 -1.52 0 0 4.57 -4.57 0 0 -4.57 -1.53 0 0 -1.53 -1.52 0 0 -1.52 -6.1 0 0 1.52 -1.52 0 0 1.53 -1.52 0 0 9.14 1.52 0 0 -6.09 1.52 0 0 -1.53 6.1 0 0 1.53 1.52 0 0 3.04 -1.52 0 0 1.53 -1.52 0 0 3.05 -4.58 0 0 1.52 4.58 0 0 6.09 1.52 0 0 -7.61 1.52 0 0 -1.53 7.62 0 0 1.53 1.53 0 0 7.61 1.52 0 0 -6.09 4.57 0 0 -1.52 -4.57 0z" fill="currentColor"></path><path d="M24.38 28.955h1.53v1.52h-1.53Z" fill="currentColor"></path><path d="M22.86 27.435h1.52v1.52h-1.52Z" fill="currentColor"></path><path d="M19.81 25.905h3.05v1.53h-3.05Z" fill="currentColor"></path><path d="M19.81 22.855h1.53v1.53h-1.53Z" fill="currentColor"></path><path d="M18.29 16.765h1.52v3.05h-1.52Z" fill="currentColor"></path><path d="M12.19 24.385h7.62v1.52h-7.62Z" fill="currentColor"></path><path d="M13.72 21.335h4.57v1.52h-4.57Z" fill="currentColor"></path><path d="M12.19 16.765h1.53v3.05h-1.53Z" fill="currentColor"></path><path d="M10.67 22.855h1.52v1.53h-1.52Z" fill="currentColor"></path><path d="M9.15 25.905h3.04v1.53H9.15Z" fill="currentColor"></path><path d="M7.62 27.435h1.53v1.52H7.62Z" fill="currentColor"></path><path d="M6.1 28.955h1.52v1.52H6.1Z" fill="currentColor"></path><path d="M3.05 13.715h1.52v1.53H3.05Z" fill="currentColor"></path><path d="M1.53 16.765h3.04v1.52H1.53Z" fill="currentColor"></path><path d="M0 18.285h1.53v1.53H0Z" fill="currentColor"></path></svg>
 							</div>
 							<div class="feature-title pixel feature-title--light">Pensada para todos</div>
 							<div class="feature-copy feature-copy--light">
@@ -358,7 +354,7 @@ export const prerender = true;
 			</section>
 
 			<!-- GALERÍA -->
-			<section class="section checker-bg gallery-section">
+			<section class="section checker-bg gallery-section" id="capturas">
 				<div class="container">
 					<div class="center">
 						<div class="eyebrow eyebrow--gold">Así se ve</div>
@@ -524,6 +520,15 @@ export const prerender = true;
 				</div>
 			</footer>
 		</div>
+
+		<script is:inline>
+			const topbar = document.getElementById('topbar');
+			const onScroll = () => {
+				topbar.classList.toggle('is-scrolled', window.scrollY > 20);
+			};
+			window.addEventListener('scroll', onScroll, { passive: true });
+			onScroll();
+		</script>
 	</body>
 </html>
 
@@ -714,21 +719,51 @@ export const prerender = true;
 		max-width: none;
 	}
 
+	html {
+		scroll-behavior: smooth;
+		scroll-padding-top: 74px;
+	}
 	.topbar {
+		position: sticky;
+		top: 0;
+		z-index: 50;
+		border-bottom: 4px solid #2a1a22;
+		transition:
+			background-color 0.2s ease,
+			backdrop-filter 0.2s ease;
+	}
+	.topbar.is-scrolled {
+		background-image: none;
+		background-color: rgba(42, 26, 34, 0.72);
+		backdrop-filter: blur(10px);
+		-webkit-backdrop-filter: blur(10px);
+	}
+	.topbar-inner {
 		padding: 14px 24px;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		border-bottom: 4px solid #2a1a22;
+		gap: 16px;
+		flex-wrap: wrap;
 	}
 	.wordmark {
 		font-size: 18px;
 		color: #fee761;
+		text-decoration: none;
+	}
+	.topnav {
+		display: flex;
+		align-items: center;
+		gap: 20px;
+		flex-wrap: wrap;
 	}
 	.toplink {
-		font-size: 18px;
+		font-size: 16px;
 		color: #f6ca9f;
 		text-decoration: none;
+	}
+	.toplink:hover {
+		color: #fee761;
 	}
 
 	.hero {
@@ -898,15 +933,21 @@ export const prerender = true;
 	.feature-card {
 		display: flex;
 		flex-direction: column;
-		gap: 10px;
+		align-items: center;
+		text-align: center;
+		gap: 12px;
 	}
 	.feature-icon {
-		width: 40px;
-		height: 40px;
+		width: 64px;
+		height: 64px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		color: #3e8948;
+	}
+	.feature-icon svg {
+		width: 100%;
+		height: 100%;
 	}
 	.feature-icon--light {
 		color: #fee761;
@@ -1212,6 +1253,14 @@ export const prerender = true;
 		}
 	}
 	@media (max-width: 560px) {
+		.topbar-inner {
+			justify-content: center;
+			text-align: center;
+		}
+		.topnav {
+			justify-content: center;
+			gap: 14px;
+		}
 		.deck-grid {
 			grid-template-columns: 1fr;
 		}
