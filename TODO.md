@@ -35,8 +35,15 @@ un FAQ + un contacto visible ya cumple el requisito.
 - [ ] Desplegar a Cloudflare (`wrangler login` + `wrangler deploy`, o conectar
       el repo a Cloudflare Pages desde su dashboard para deploy automático en
       cada push).
-- [ ] Dominio propio (o subdominio) en vez del `*.pages.dev` que da Cloudflare
-      por defecto — se ve más profesional en las fichas de las tiendas.
+- [ ] Subdominio propio: `pixoteria.infinitydev.agency`. `infinitydev.agency`
+      ya está en la cuenta de Cloudflare, así que después de desplegar:
+      dashboard → **Workers & Pages → pixoteria-landing → Settings →
+      Domains & Routes → Add → Custom Domain** → escribir
+      `pixoteria.infinitydev.agency`. Cloudflare crea el DNS y el SSL solo.
+      **Ojo:** agregar `routes` con `custom_domain: true` en `wrangler.jsonc`
+      no funciona con el adapter de Astro para Cloudflare (lo probé — el
+      config que realmente usa el deploy no lo incluye), hay que hacerlo
+      desde el dashboard.
 - [ ] Reemplazar los botones "Próximamente" del hero por los links reales de
       App Store / Google Play una vez que la app esté publicada.
 - [ ] Actualizar `og:image` con una imagen pensada para redes (1200×630) en

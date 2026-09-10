@@ -99,6 +99,10 @@ export const prerender = true;
 				<div class="mx-auto max-w-7xl px-[25px] sm:px-8 md:px-12 lg:px-16">
 					<div class="center">
 						<h2 class="pixel badge-heading">ELIGE TU MAZO</h2>
+						<p class="body-copy centered-copy badge-subcopy">
+							54 personajes por baraja. Desliza para ver las 9 — la que elijas
+							la ven todos en tu mesa.
+						</p>
 					</div>
 					<div class="badge-strip-wrap">
 						<div class="badge-arrow">
@@ -892,6 +896,10 @@ export const prerender = true;
 		color: #3f2832;
 		margin: 0;
 	}
+	.badge-subcopy {
+		margin: 10px auto 0;
+		color: #6b4436;
+	}
 	.badge-strip-wrap {
 		display: flex;
 		align-items: center;
@@ -1127,6 +1135,7 @@ export const prerender = true;
 		margin-top: 56px;
 		display: flex;
 		justify-content: center;
+		overflow: hidden;
 	}
 	.fan-item {
 		position: absolute;
@@ -1415,7 +1424,8 @@ export const prerender = true;
 			font-size: 32px;
 		}
 		.section {
-			padding: 56px 18px;
+			padding-top: 56px;
+			padding-bottom: 56px;
 		}
 		.cta-photo .overlay {
 			padding: 64px 20px;
@@ -1427,6 +1437,31 @@ export const prerender = true;
 			flex-direction: column;
 			align-items: center;
 			text-align: center;
+		}
+		.badge-arrow {
+			display: none;
+		}
+		.badge-strip-wrap {
+			gap: 0;
+		}
+		.badge-item {
+			width: 74vw;
+			max-width: 260px;
+		}
+		.card-fan {
+			height: 380px;
+		}
+		.fan-item {
+			transform-origin: center top;
+		}
+		.fan-item--left {
+			transform: rotate(-9deg) translate(-52px, 10px) scale(0.82);
+		}
+		.fan-item--right {
+			transform: rotate(9deg) translate(52px, 10px) scale(0.82);
+		}
+		.iphone-frame {
+			width: 172px;
 		}
 	}
 </style>
