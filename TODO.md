@@ -46,5 +46,8 @@ un FAQ + un contacto visible ya cumple el requisito.
       desde el dashboard.
 - [ ] Reemplazar los botones "Próximamente" del hero por los links reales de
       App Store / Google Play una vez que la app esté publicada.
-- [ ] Actualizar `og:image` con una imagen pensada para redes (1200×630) en
-      vez del ícono cuadrado — hoy se ve recortado al compartir el link.
+- [x] Actualizar `og:image` con una imagen pensada para redes (1200×630)
+      (`public/og-image.jpg`).
+- [ ] Si el dominio final no es `pixoteria.infinitydev.agency`, cambiar `site`
+      en `astro.config.mjs`, `public/robots.txt` y `public/sitemap.xml`.
+- [ ] Dar de alta el sitio en Google Search Console y enviar `/sitemap.xml`.

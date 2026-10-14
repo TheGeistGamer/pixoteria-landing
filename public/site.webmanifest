@@ -1,0 +1,14 @@
+{
+	"name": "Pixotería",
+	"short_name": "Pixotería",
+	"description": "Lotería mexicana multijugador por WiFi local.",
+	"lang": "es-MX",
+	"start_url": "/",
+	"display": "browser",
+	"background_color": "#fbf3e4",
+	"theme_color": "#3f2832",
+	"icons": [
+		{ "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+		{ "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+	]
+}

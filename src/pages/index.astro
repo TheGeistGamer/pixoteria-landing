@@ -2,39 +2,134 @@
 import '../styles/global.css';
 
 export const prerender = true;
+
+const siteUrl = (Astro.site ?? new URL('https://pixoteria.infinitydev.agency')).href.replace(/\/$/, '');
+const canonical = `${siteUrl}/`;
+const title = 'Pixotería — Lotería mexicana multijugador por WiFi local';
+const description =
+	'Juega lotería mexicana con tu familia y amigos desde el teléfono: multijugador por WiFi local, 9 barajas, sin cuentas y sin internet. Próximamente en App Store y Google Play.';
+const ogImage = `${siteUrl}/og-image.jpg`;
+
+const faqs = [
+	['¿Cómo juego con mis amigos?', 'Uno crea la partida, los demás la buscan desde la misma red WiFi y se unen — sin escribir direcciones ni códigos.'],
+	['¿Necesito internet para jugar?', 'No. Solo tu red WiFi local. Internet solo hace falta si decides ver un anuncio para rentar un mazo.'],
+	['¿Cómo desbloqueo un mazo?', 'Viendo un anuncio para rentarlo 24 horas gratis. Las compras llegarán en una próxima actualización.'],
+	['¿Cómo borro mis datos?', 'Desinstala la app. Todo vive en tu teléfono — no hay nada guardado en ningún servidor nuestro que borrar.'],
+];
+
+const jsonLd = {
+	'@context': 'https://schema.org',
+	'@graph': [
+		{
+			'@type': 'Organization',
+			'@id': `${siteUrl}/#org`,
+			name: 'Infinity Dev',
+			url: 'https://infinitydev.agency',
+			email: 'contacto@infinitydev.agency',
+		},
+		{
+			'@type': 'WebSite',
+			'@id': `${siteUrl}/#website`,
+			url: canonical,
+			name: 'Pixotería',
+			inLanguage: 'es',
+			publisher: { '@id': `${siteUrl}/#org` },
+		},
+		{
+			'@type': ['MobileApplication', 'VideoGame'],
+			name: 'Pixotería',
+			description,
+			url: canonical,
+			image: ogImage,
+			applicationCategory: 'GameApplication',
+			genre: ['Lotería', 'Juego de mesa', 'Party game'],
+			operatingSystem: 'iOS, Android',
+			inLanguage: 'es',
+			playMode: 'MultiPlayer',
+			numberOfPlayers: { '@type': 'QuantitativeValue', minValue: 2 },
+			offers: { '@type': 'Offer', price: '0', priceCurrency: 'MXN' },
+			author: { '@id': `${siteUrl}/#org` },
+		},
+		{
+			'@type': 'FAQPage',
+			mainEntity: faqs.map(([q, a]) => ({
+				'@type': 'Question',
+				name: q,
+				acceptedAnswer: { '@type': 'Answer', text: a },
+			})),
+		},
+	],
+};
 ---
 
-<html lang="es">
+<html lang="es-MX">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<link rel="canonical" href={canonical} />
+		<meta name="robots" content="index, follow, max-image-preview:large" />
+		<meta name="theme-color" content="#3f2832" />
+		<meta name="color-scheme" content="light" />
 		<meta name="generator" content={Astro.generator} />
-		<link rel="icon" type="image/png" href="/images/icon.png" />
-		<title>Pixotería — La lotería que se juega en tu mesa</title>
-		<meta
-			name="description"
-			content="Lotería mexicana multijugador por WiFi local. Nueve barajas, sin cuentas, sin internet. Descubre Pixotería."
-		/>
-		<meta property="og:title" content="Pixotería — La lotería que se juega en tu mesa" />
-		<meta
-			property="og:description"
-			content="Lotería mexicana multijugador por WiFi local. Nueve barajas, sin cuentas, sin internet."
-		/>
-		<meta property="og:image" content="/images/icon.png" />
+
+		<link rel="icon" href="/favicon.ico" sizes="48x48" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+		<link rel="manifest" href="/site.webmanifest" />
+
+		<!-- Open Graph / redes -->
 		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="Pixotería" />
+		<meta property="og:locale" content="es_MX" />
+		<meta property="og:url" content={canonical} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={ogImage} />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:image:alt" content="Pixotería: abanico de cartas de lotería en pixel art" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImage} />
+
+		<!-- Rendimiento: fuente pixel local precargada, hero precargado, Google Fonts sin bloquear el render -->
+		<link rel="preload" href="/fonts/BoldPixels.woff2" as="font" type="font/woff2" crossorigin />
+		<link
+			rel="preload"
+			as="image"
+			type="image/webp"
+			fetchpriority="high"
+			imagesrcset="/images/cards/hero-fan-sm.webp 480w, /images/cards/hero-fan.webp 920w"
+			imagesizes="(max-width: 900px) 90vw, 460px"
+		/>
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
-			rel="stylesheet"
-			href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&display=swap"
+			rel="preload"
+			as="style"
+			href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&display=swap"
 		/>
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&display=swap"
+			media="print"
+			onload="this.media='all'"
+		/>
+		<noscript>
+			<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&display=swap" />
+		</noscript>
+
+		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 	</head>
 	<body>
 		<div class="page">
 			<header class="checker-bg topbar" id="topbar">
 				<div class="topbar-inner">
-					<a href="#inicio" class="pixel wordmark">PIXOTERÍA</a>
-					<nav class="topnav">
+					<a href="#inicio" class="pixel wordmark" aria-label="Pixotería, ir al inicio">PIXOTERÍA</a>
+					<nav class="topnav" aria-label="Secciones">
 						<a href="#mazos" class="pixel toplink">Mazos</a>
 						<a href="#barajas" class="pixel toplink">Barajas</a>
 						<a href="#capturas" class="pixel toplink">Capturas</a>
@@ -44,6 +139,7 @@ export const prerender = true;
 				</div>
 			</header>
 
+			<main>
 			<!-- HERO -->
 			<section class="section hero" id="inicio">
 				<div class="mx-auto max-w-7xl px-[25px] sm:px-8 md:px-12 lg:px-16 hero-grid">
@@ -56,7 +152,7 @@ export const prerender = true;
 						</p>
 						<div class="hero-buttons">
 							<span class="btn-pixel btn-pixel--green btn-pixel--static">
-								<svg
+								<svg aria-hidden="true" focusable="false"
 									width="20"
 									height="20"
 									viewBox="0 0 24 24"
@@ -70,7 +166,7 @@ export const prerender = true;
 								Próximamente · App Store
 							</span>
 							<span class="btn-pixel btn-pixel--play btn-pixel--static">
-								<svg
+								<svg aria-hidden="true" focusable="false"
 									width="20"
 									height="20"
 									viewBox="0 0 24 24"
@@ -85,8 +181,8 @@ export const prerender = true;
 					</div>
 
 					<div class="hero-scene">
-						<img
-							src="/images/cards/hero-fan.jpg"
+						<img width="920" height="874" fetchpriority="high" decoding="async"
+							src="/images/cards/hero-fan.webp" srcset="/images/cards/hero-fan-sm.webp 480w, /images/cards/hero-fan.webp 920w" sizes="(max-width: 900px) 90vw, 460px"
 							alt="Abanico de cartas de lotería de Pixotería: El Mercado, La Ofrenda y más"
 							class="hero-scene-img"
 						/>
@@ -105,78 +201,78 @@ export const prerender = true;
 						</p>
 					</div>
 					<div class="badge-strip-wrap">
-						<div class="badge-arrow">
-							<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+						<div class="badge-arrow" aria-hidden="true">
+							<svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
 								><path d="M15 6l-6 6 6 6"></path></svg
 							>
 						</div>
-						<div class="badge-strip">
-							<div class="badge-item">
+						<div class="badge-strip" role="list" aria-label="Mazos disponibles" tabindex="0">
+							<div class="badge-item" role="listitem">
 								<div class="card-thumb">
-									<img src="/images/cards/perrault-zapato-cristal.png" alt="Carta El Zapato de Cristal, del mazo Cuentos de Perrault" />
+									<img width="420" height="598" loading="lazy" decoding="async" src="/images/cards/perrault-zapato-cristal.webp" srcset="/images/cards/perrault-zapato-cristal-sm.webp 220w, /images/cards/perrault-zapato-cristal.webp 420w" sizes="140px" alt="Carta El Zapato de Cristal, del mazo Cuentos de Perrault" />
 								</div>
 								<div class="deck-name">Perrault</div>
 								<div class="deck-desc">Cenicienta, Caperucita, El Gato con Botas y más.</div>
 							</div>
-							<div class="badge-item">
+							<div class="badge-item" role="listitem">
 								<div class="card-thumb">
-									<img src="/images/cards/grimm-principe-rana.png" alt="Carta El Príncipe Rana, del mazo Hermanos Grimm" />
+									<img width="420" height="574" loading="lazy" decoding="async" src="/images/cards/grimm-principe-rana.webp" srcset="/images/cards/grimm-principe-rana-sm.webp 220w, /images/cards/grimm-principe-rana.webp 420w" sizes="140px" alt="Carta El Príncipe Rana, del mazo Hermanos Grimm" />
 								</div>
 								<div class="deck-name">Grimm</div>
 								<div class="deck-desc">Hansel y Gretel, Blancanieves, Rapunzel y más.</div>
 							</div>
-							<div class="badge-item">
+							<div class="badge-item" role="listitem">
 								<div class="card-thumb">
-									<img src="/images/cards/carroll-jardin-rosas.png" alt="Carta El Jardín de Rosas, del mazo País de las Maravillas" />
+									<img width="420" height="574" loading="lazy" decoding="async" src="/images/cards/carroll-jardin-rosas.webp" srcset="/images/cards/carroll-jardin-rosas-sm.webp 220w, /images/cards/carroll-jardin-rosas.webp 420w" sizes="140px" alt="Carta El Jardín de Rosas, del mazo País de las Maravillas" />
 								</div>
 								<div class="deck-name">Carroll</div>
 								<div class="deck-desc">El Conejo Blanco, el Sombrerero Loco, el Gato de Cheshire.</div>
 							</div>
-							<div class="badge-item">
+							<div class="badge-item" role="listitem">
 								<div class="card-thumb">
-									<img src="/images/cards/piratas-kraken.png" alt="Carta El Kraken, del mazo Piratas" />
+									<img width="420" height="634" loading="lazy" decoding="async" src="/images/cards/piratas-kraken.webp" srcset="/images/cards/piratas-kraken-sm.webp 220w, /images/cards/piratas-kraken.webp 420w" sizes="140px" alt="Carta El Kraken, del mazo Piratas" />
 								</div>
 								<div class="deck-name">Piratas</div>
 								<div class="deck-desc">El capitán, el kraken, el mapa del tesoro y más.</div>
 							</div>
-							<div class="badge-item">
+							<div class="badge-item" role="listitem">
 								<div class="card-thumb">
-									<img src="/images/cards/griego-zeus.png" alt="Carta Zeus, del mazo Mitología Griega" />
+									<img width="420" height="628" loading="lazy" decoding="async" src="/images/cards/griego-zeus.webp" srcset="/images/cards/griego-zeus-sm.webp 220w, /images/cards/griego-zeus.webp 420w" sizes="140px" alt="Carta Zeus, del mazo Mitología Griega" />
 								</div>
 								<div class="deck-name">Griego</div>
 								<div class="deck-desc">Zeus, Atenea, Medusa, el Minotauro y más.</div>
 							</div>
-							<div class="badge-item">
+							<div class="badge-item" role="listitem">
 								<div class="card-thumb">
-									<img src="/images/cards/muertos-fruta-temporada.png" alt="Carta La Fruta de Temporada, del mazo Día de Muertos" />
+									<img width="420" height="574" loading="lazy" decoding="async" src="/images/cards/muertos-fruta-temporada.webp" srcset="/images/cards/muertos-fruta-temporada-sm.webp 220w, /images/cards/muertos-fruta-temporada.webp 420w" sizes="140px" alt="Carta La Fruta de Temporada, del mazo Día de Muertos" />
 								</div>
 								<div class="deck-name">Muertos</div>
 								<div class="deck-desc">La Catrina, el Xoloitzcuintle, la Calaverita de Azúcar.</div>
 							</div>
-							<div class="badge-item">
+							<div class="badge-item" role="listitem">
 								<div class="card-thumb">
-									<img src="/images/cards/cyberpunk-androide.png" alt="Carta El Androide, del mazo Cyberpunk" />
+									<img width="420" height="624" loading="lazy" decoding="async" src="/images/cards/cyberpunk-androide.webp" srcset="/images/cards/cyberpunk-androide-sm.webp 220w, /images/cards/cyberpunk-androide.webp 420w" sizes="140px" alt="Carta El Androide, del mazo Cyberpunk" />
 								</div>
 								<div class="deck-name">Cyberpunk</div>
 								<div class="deck-desc">El hacker, el androide, la megaciudad y más.</div>
 							</div>
-							<div class="badge-item">
+							<div class="badge-item" role="listitem">
 								<div class="card-thumb">
-									<img src="/images/cards/terror-muneca.png" alt="Carta La Muñeca Embrujada, del mazo Terror Clásico" />
+									<img width="420" height="624" loading="lazy" decoding="async" src="/images/cards/terror-muneca.webp" srcset="/images/cards/terror-muneca-sm.webp 220w, /images/cards/terror-muneca.webp 420w" sizes="140px" alt="Carta La Muñeca Embrujada, del mazo Terror Clásico" />
 								</div>
 								<div class="deck-name">Terror</div>
 								<div class="deck-desc">El vampiro, el hombre lobo, la casa embrujada y más.</div>
 							</div>
-							<div class="badge-item">
+							<div class="badge-item" role="listitem">
 								<div class="card-thumb">
-									<img src="/images/cards/nordico-thor.png" alt="Carta Thor, del mazo Mitología Nórdica" />
+									<img width="420" height="626" loading="lazy" decoding="async" src="/images/cards/nordico-thor.webp" srcset="/images/cards/nordico-thor-sm.webp 220w, /images/cards/nordico-thor.webp 420w" sizes="140px" alt="Carta Thor, del mazo Mitología Nórdica" />
 								</div>
 								<div class="deck-name">Nórdico</div>
 								<div class="deck-desc">Odín, Thor, Loki, Fenrir y más.</div>
 							</div>
 						</div>
-						<div class="badge-arrow">
-							<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+						<div class="badge-arrow" aria-hidden="true">
+							<svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
 								><path d="M9 6l6 6-6 6"></path></svg
 							>
 						</div>
@@ -188,7 +284,7 @@ export const prerender = true;
 			<section class="checker-red section">
 				<div class="mx-auto max-w-7xl px-[25px] sm:px-8 md:px-12 lg:px-16 showcase-split">
 					<div class="showcase-shot">
-						<img src="/images/cards/terror-muneca.png" alt="Carta La Muñeca Embrujada, del mazo Terror Clásico" />
+						<img width="420" height="624" loading="lazy" decoding="async" src="/images/cards/terror-muneca.webp" srcset="/images/cards/terror-muneca-sm.webp 220w, /images/cards/terror-muneca.webp 420w" sizes="(max-width: 900px) 90vw, 460px" alt="Carta La Muñeca Embrujada, del mazo Terror Clásico" />
 					</div>
 					<div>
 						<div class="eyebrow eyebrow--light">Baraja destacada</div>
@@ -211,7 +307,7 @@ export const prerender = true;
 					<div class="feature-grid feature-grid--wide">
 						<div class="feature-card">
 							<div class="feature-icon feature-icon--light">
-								<svg width="32" height="32" viewBox="0 0 32 32"><path d="M30.48 16.76H32v12.19h-1.52Z" fill="currentColor"></path><path d="M28.95 28.95h1.53v1.53h-1.53Z" fill="currentColor"></path><path d="M28.95 15.24V3.05h-1.52V1.52h-1.52V0h-7.62v1.52h-1.53v1.53h-1.52v12.19h-1.52v1.52h16.76v-1.52Zm-3.04 0h-7.62V4.57h1.52V3.05h4.57v1.52h1.53Z" fill="currentColor"></path><path d="M15.24 30.48h13.71V32H15.24Z" fill="currentColor"></path><path d="M24.38 22.86h1.53v1.52h-1.53Z" fill="currentColor"></path><path d="M24.38 19.81h1.53v1.52h-1.53Z" fill="currentColor"></path><path d="M19.81 24.38h4.57v1.52h-4.57Z" fill="currentColor"></path><path d="M18.29 22.86h1.52v1.52h-1.52Z" fill="currentColor"></path><path d="M18.29 19.81h1.52v1.52h-1.52Z" fill="currentColor"></path><path d="M13.72 28.95h1.52v1.53h-1.52Z" fill="currentColor"></path><path d="M12.19 16.76h1.53v4.57h-1.53Z" fill="currentColor"></path><path d="M10.67 22.86h1.52v6.09h-1.52Z" fill="currentColor"></path><path d="M9.15 28.95h1.52v1.53H9.15Z" fill="currentColor"></path><path d="M9.15 21.33h1.52v1.53H9.15Z" fill="currentColor"></path><path d="M7.62 6.09h1.53v15.24H7.62Z" fill="currentColor"></path><path d="M3.05 30.48h6.1V32h-6.1Z" fill="currentColor"></path><path d="m7.62 22.86 -3.05 0 0 1.52 -1.52 0 0 3.05 1.52 0 0 1.52 3.05 0 0 -1.52 1.53 0 0 -3.05 -1.53 0 0 -1.52z" fill="currentColor"></path><path d="M4.57 4.57h3.05v1.52H4.57Z" fill="currentColor"></path><path d="m4.57 16.76 -3.04 0 0 -1.52 3.04 0 0 -4.57 -3.04 0 0 -1.53 3.04 0 0 -3.05 -1.52 0 0 1.53 -3.05 0 0 4.57 3.05 0 0 1.52 -3.05 0 0 4.57 3.05 0 0 3.05 1.52 0 0 -4.57z" fill="currentColor"></path><path d="M1.53 28.95h1.52v1.53H1.53Z" fill="currentColor"></path><path d="M1.53 21.33h1.52v1.53H1.53Z" fill="currentColor"></path><path d="M0 22.86h1.53v6.09H0Z" fill="currentColor"></path></svg>
+								<svg aria-hidden="true" focusable="false" width="32" height="32" viewBox="0 0 32 32"><path d="M30.48 16.76H32v12.19h-1.52Z" fill="currentColor"></path><path d="M28.95 28.95h1.53v1.53h-1.53Z" fill="currentColor"></path><path d="M28.95 15.24V3.05h-1.52V1.52h-1.52V0h-7.62v1.52h-1.53v1.53h-1.52v12.19h-1.52v1.52h16.76v-1.52Zm-3.04 0h-7.62V4.57h1.52V3.05h4.57v1.52h1.53Z" fill="currentColor"></path><path d="M15.24 30.48h13.71V32H15.24Z" fill="currentColor"></path><path d="M24.38 22.86h1.53v1.52h-1.53Z" fill="currentColor"></path><path d="M24.38 19.81h1.53v1.52h-1.53Z" fill="currentColor"></path><path d="M19.81 24.38h4.57v1.52h-4.57Z" fill="currentColor"></path><path d="M18.29 22.86h1.52v1.52h-1.52Z" fill="currentColor"></path><path d="M18.29 19.81h1.52v1.52h-1.52Z" fill="currentColor"></path><path d="M13.72 28.95h1.52v1.53h-1.52Z" fill="currentColor"></path><path d="M12.19 16.76h1.53v4.57h-1.53Z" fill="currentColor"></path><path d="M10.67 22.86h1.52v6.09h-1.52Z" fill="currentColor"></path><path d="M9.15 28.95h1.52v1.53H9.15Z" fill="currentColor"></path><path d="M9.15 21.33h1.52v1.53H9.15Z" fill="currentColor"></path><path d="M7.62 6.09h1.53v15.24H7.62Z" fill="currentColor"></path><path d="M3.05 30.48h6.1V32h-6.1Z" fill="currentColor"></path><path d="m7.62 22.86 -3.05 0 0 1.52 -1.52 0 0 3.05 1.52 0 0 1.52 3.05 0 0 -1.52 1.53 0 0 -3.05 -1.53 0 0 -1.52z" fill="currentColor"></path><path d="M4.57 4.57h3.05v1.52H4.57Z" fill="currentColor"></path><path d="m4.57 16.76 -3.04 0 0 -1.52 3.04 0 0 -4.57 -3.04 0 0 -1.53 3.04 0 0 -3.05 -1.52 0 0 1.53 -3.05 0 0 4.57 3.05 0 0 1.52 -3.05 0 0 4.57 3.05 0 0 3.05 1.52 0 0 -4.57z" fill="currentColor"></path><path d="M1.53 28.95h1.52v1.53H1.53Z" fill="currentColor"></path><path d="M1.53 21.33h1.52v1.53H1.53Z" fill="currentColor"></path><path d="M0 22.86h1.53v6.09H0Z" fill="currentColor"></path></svg>
 							</div>
 							<div class="feature-title pixel feature-title--light">Cero cuentas</div>
 							<div class="feature-copy feature-copy--light">
@@ -220,7 +316,7 @@ export const prerender = true;
 						</div>
 						<div class="feature-card">
 							<div class="feature-icon feature-icon--light">
-								<svg width="32" height="32" viewBox="0 0 32 32"><path d="M30.48 7.62H32v10.66h-1.52Z" fill="currentColor"></path><path d="M28.95 18.28h1.53v1.53h-1.53Z" fill="currentColor"></path><path d="M28.95 6.09h1.53v1.53h-1.53Z" fill="currentColor"></path><path d="M19.81 19.81h9.14v1.52h-9.14Z" fill="currentColor"></path><path d="M25.91 10.67h1.52v4.57h-1.52Z" fill="currentColor"></path><path d="M19.81 9.14h6.1v1.53h-6.1Z" fill="currentColor"></path><path d="M19.81 15.24h6.1v1.52h-6.1Z" fill="currentColor"></path><path d="M19.81 4.57h9.14v1.52h-9.14Z" fill="currentColor"></path><path d="M18.29 16.76h1.52v3.05h-1.52Z" fill="currentColor"></path><path d="M18.29 6.09h1.52v3.05h-1.52Z" fill="currentColor"></path><path d="M15.24 21.33h1.52v3.05h-1.52Z" fill="currentColor"></path><path d="M13.72 24.38h1.52v1.52h-1.52Z" fill="currentColor"></path><path d="M12.19 19.81h3.05v1.52h-3.05Z" fill="currentColor"></path><path d="M13.72 1.52h1.52v4.57h-1.52Z" fill="currentColor"></path><path d="M12.19 25.9h1.53v1.53h-1.53Z" fill="currentColor"></path><path d="M10.67 27.43h1.52v1.52h-1.52Z" fill="currentColor"></path><path d="M10.67 21.33h1.52v1.53h-1.52Z" fill="currentColor"></path><path d="M9.15 22.86h1.52v1.52H9.15Z" fill="currentColor"></path><path d="M9.15 15.24h1.52v3.04H9.15Z" fill="currentColor"></path><path d="M4.57 28.95h6.1v1.53h-6.1Z" fill="currentColor"></path><path d="M7.62 18.28h1.53v1.53H7.62Z" fill="currentColor"></path><path d="M6.1 13.71h3.05v1.53H6.1Z" fill="currentColor"></path><path d="M6.1 24.38h3.05v1.52H6.1Z" fill="currentColor"></path><path d="M6.1 19.81h1.52v1.52H6.1Z" fill="currentColor"></path><path d="M4.57 9.14h4.58v1.53H4.57Z" fill="currentColor"></path><path d="m4.57 3.05 3.05 0 0 3.04 3.05 0 0 3.05 1.52 0 0 -4.57 -3.04 0 0 -3.05 -4.58 0 0 1.53z" fill="currentColor"></path><path d="M4.57 21.33H6.1v3.05H4.57Z" fill="currentColor"></path><path d="M4.57 15.24H6.1v1.52H4.57Z" fill="currentColor"></path><path d="M3.05 27.43h1.52v1.52H3.05Z" fill="currentColor"></path><path d="M3.05 16.76h1.52v1.52H3.05Z" fill="currentColor"></path><path d="M1.53 25.9h1.52v1.53H1.53Z" fill="currentColor"></path><path d="M1.53 18.28h1.52v1.53H1.53Z" fill="currentColor"></path><path d="M0 19.81h1.53v6.09H0Z" fill="currentColor"></path></svg>
+								<svg aria-hidden="true" focusable="false" width="32" height="32" viewBox="0 0 32 32"><path d="M30.48 7.62H32v10.66h-1.52Z" fill="currentColor"></path><path d="M28.95 18.28h1.53v1.53h-1.53Z" fill="currentColor"></path><path d="M28.95 6.09h1.53v1.53h-1.53Z" fill="currentColor"></path><path d="M19.81 19.81h9.14v1.52h-9.14Z" fill="currentColor"></path><path d="M25.91 10.67h1.52v4.57h-1.52Z" fill="currentColor"></path><path d="M19.81 9.14h6.1v1.53h-6.1Z" fill="currentColor"></path><path d="M19.81 15.24h6.1v1.52h-6.1Z" fill="currentColor"></path><path d="M19.81 4.57h9.14v1.52h-9.14Z" fill="currentColor"></path><path d="M18.29 16.76h1.52v3.05h-1.52Z" fill="currentColor"></path><path d="M18.29 6.09h1.52v3.05h-1.52Z" fill="currentColor"></path><path d="M15.24 21.33h1.52v3.05h-1.52Z" fill="currentColor"></path><path d="M13.72 24.38h1.52v1.52h-1.52Z" fill="currentColor"></path><path d="M12.19 19.81h3.05v1.52h-3.05Z" fill="currentColor"></path><path d="M13.72 1.52h1.52v4.57h-1.52Z" fill="currentColor"></path><path d="M12.19 25.9h1.53v1.53h-1.53Z" fill="currentColor"></path><path d="M10.67 27.43h1.52v1.52h-1.52Z" fill="currentColor"></path><path d="M10.67 21.33h1.52v1.53h-1.52Z" fill="currentColor"></path><path d="M9.15 22.86h1.52v1.52H9.15Z" fill="currentColor"></path><path d="M9.15 15.24h1.52v3.04H9.15Z" fill="currentColor"></path><path d="M4.57 28.95h6.1v1.53h-6.1Z" fill="currentColor"></path><path d="M7.62 18.28h1.53v1.53H7.62Z" fill="currentColor"></path><path d="M6.1 13.71h3.05v1.53H6.1Z" fill="currentColor"></path><path d="M6.1 24.38h3.05v1.52H6.1Z" fill="currentColor"></path><path d="M6.1 19.81h1.52v1.52H6.1Z" fill="currentColor"></path><path d="M4.57 9.14h4.58v1.53H4.57Z" fill="currentColor"></path><path d="m4.57 3.05 3.05 0 0 3.04 3.05 0 0 3.05 1.52 0 0 -4.57 -3.04 0 0 -3.05 -4.58 0 0 1.53z" fill="currentColor"></path><path d="M4.57 21.33H6.1v3.05H4.57Z" fill="currentColor"></path><path d="M4.57 15.24H6.1v1.52H4.57Z" fill="currentColor"></path><path d="M3.05 27.43h1.52v1.52H3.05Z" fill="currentColor"></path><path d="M3.05 16.76h1.52v1.52H3.05Z" fill="currentColor"></path><path d="M1.53 25.9h1.52v1.53H1.53Z" fill="currentColor"></path><path d="M1.53 18.28h1.52v1.53H1.53Z" fill="currentColor"></path><path d="M0 19.81h1.53v6.09H0Z" fill="currentColor"></path></svg>
 							</div>
 							<div class="feature-title pixel feature-title--light">Anuncios opcionales</div>
 							<div class="feature-copy feature-copy--light">
@@ -229,7 +325,7 @@ export const prerender = true;
 						</div>
 						<div class="feature-card">
 							<div class="feature-icon feature-icon--light">
-								<svg width="32" height="32" viewBox="0 0 32 32"><path d="M6.855 1.52h-1.52v28.96h1.52V32h18.29v-1.52h1.52V1.52h-1.52V0H6.855Zm9.15 0h3.04v1.53h-3.04Zm-3.05 0h1.52v1.53h-1.52Zm7.62 3.05V3.05h4.57v25.9H6.855V3.05h4.57v1.52Z" fill="currentColor"></path><path d="M22.095 22.86h1.52v3.05h-1.52Z" fill="currentColor"></path><path d="M22.095 7.62h1.52v3.05h-1.52Z" fill="currentColor"></path><path d="M20.575 15.24h1.52v4.57h-1.52Z" fill="currentColor"></path><path d="M20.575 12.19h1.52v1.52h-1.52Z" fill="currentColor"></path><path d="M19.045 6.1h3.05v1.52h-3.05Z" fill="currentColor"></path><path d="M19.045 25.91h3.05v1.52h-3.05Z" fill="currentColor"></path><path d="M19.045 10.67h1.53v1.52h-1.53Z" fill="currentColor"></path><path d="M17.525 18.29h1.52v4.57h-1.52Z" fill="currentColor"></path><path d="M17.525 13.71h1.52v3.05h-1.52Z" fill="currentColor"></path><path d="M16.005 9.14h3.04v1.53h-3.04Z" fill="currentColor"></path><path d="M12.955 22.86h4.57v1.52h-4.57Z" fill="currentColor"></path><path d="M14.475 18.29h1.53v1.52h-1.53Z" fill="currentColor"></path><path d="M14.475 12.19h3.05v1.52h-3.05Z" fill="currentColor"></path><path d="M12.955 13.71h1.52v4.58h-1.52Z" fill="currentColor"></path><path d="M12.955 9.14h1.52v1.53h-1.52Z" fill="currentColor"></path><path d="M11.425 21.33h1.53v1.53h-1.53Z" fill="currentColor"></path><path d="M11.425 10.67h1.53v1.52h-1.53Z" fill="currentColor"></path><path d="M9.905 6.1h3.05v1.52h-3.05Z" fill="currentColor"></path><path d="M9.905 25.91h3.05v1.52h-3.05Z" fill="currentColor"></path><path d="M9.905 19.81h1.52v1.52h-1.52Z" fill="currentColor"></path><path d="M9.905 12.19h1.52v6.1h-1.52Z" fill="currentColor"></path><path d="M8.385 22.86h1.52v3.05h-1.52Z" fill="currentColor"></path><path d="M8.385 7.62h1.52v3.05h-1.52Z" fill="currentColor"></path></svg>
+								<svg aria-hidden="true" focusable="false" width="32" height="32" viewBox="0 0 32 32"><path d="M6.855 1.52h-1.52v28.96h1.52V32h18.29v-1.52h1.52V1.52h-1.52V0H6.855Zm9.15 0h3.04v1.53h-3.04Zm-3.05 0h1.52v1.53h-1.52Zm7.62 3.05V3.05h4.57v25.9H6.855V3.05h4.57v1.52Z" fill="currentColor"></path><path d="M22.095 22.86h1.52v3.05h-1.52Z" fill="currentColor"></path><path d="M22.095 7.62h1.52v3.05h-1.52Z" fill="currentColor"></path><path d="M20.575 15.24h1.52v4.57h-1.52Z" fill="currentColor"></path><path d="M20.575 12.19h1.52v1.52h-1.52Z" fill="currentColor"></path><path d="M19.045 6.1h3.05v1.52h-3.05Z" fill="currentColor"></path><path d="M19.045 25.91h3.05v1.52h-3.05Z" fill="currentColor"></path><path d="M19.045 10.67h1.53v1.52h-1.53Z" fill="currentColor"></path><path d="M17.525 18.29h1.52v4.57h-1.52Z" fill="currentColor"></path><path d="M17.525 13.71h1.52v3.05h-1.52Z" fill="currentColor"></path><path d="M16.005 9.14h3.04v1.53h-3.04Z" fill="currentColor"></path><path d="M12.955 22.86h4.57v1.52h-4.57Z" fill="currentColor"></path><path d="M14.475 18.29h1.53v1.52h-1.53Z" fill="currentColor"></path><path d="M14.475 12.19h3.05v1.52h-3.05Z" fill="currentColor"></path><path d="M12.955 13.71h1.52v4.58h-1.52Z" fill="currentColor"></path><path d="M12.955 9.14h1.52v1.53h-1.52Z" fill="currentColor"></path><path d="M11.425 21.33h1.53v1.53h-1.53Z" fill="currentColor"></path><path d="M11.425 10.67h1.53v1.52h-1.53Z" fill="currentColor"></path><path d="M9.905 6.1h3.05v1.52h-3.05Z" fill="currentColor"></path><path d="M9.905 25.91h3.05v1.52h-3.05Z" fill="currentColor"></path><path d="M9.905 19.81h1.52v1.52h-1.52Z" fill="currentColor"></path><path d="M9.905 12.19h1.52v6.1h-1.52Z" fill="currentColor"></path><path d="M8.385 22.86h1.52v3.05h-1.52Z" fill="currentColor"></path><path d="M8.385 7.62h1.52v3.05h-1.52Z" fill="currentColor"></path></svg>
 							</div>
 							<div class="feature-title pixel feature-title--light">Todo en tu teléfono</div>
 							<div class="feature-copy feature-copy--light">
@@ -238,7 +334,7 @@ export const prerender = true;
 						</div>
 						<div class="feature-card">
 							<div class="feature-icon feature-icon--light">
-								<svg width="32" height="32" viewBox="0 0 32 32"><path d="M30.48 18.285H32v1.53h-1.52Z" fill="currentColor"></path><path d="M27.43 16.765h3.05v1.52h-3.05Z" fill="currentColor"></path><path d="M27.43 13.715h1.52v1.53h-1.52Z" fill="currentColor"></path><path d="m22.86 15.245 0 -3.05 -1.52 0 0 -1.53 -1.53 0 0 -3.04 1.53 0 0 -1.53 6.09 0 0 1.53 1.52 0 0 6.09 1.53 0 0 -9.14 -1.53 0 0 -1.53 -1.52 0 0 -1.52 -6.09 0 0 1.52 -1.53 0 0 1.53 -1.52 0 0 4.57 -4.57 0 0 -4.57 -1.53 0 0 -1.53 -1.52 0 0 -1.52 -6.1 0 0 1.52 -1.52 0 0 1.53 -1.52 0 0 9.14 1.52 0 0 -6.09 1.52 0 0 -1.53 6.1 0 0 1.53 1.52 0 0 3.04 -1.52 0 0 1.53 -1.52 0 0 3.05 -4.58 0 0 1.52 4.58 0 0 6.09 1.52 0 0 -7.61 1.52 0 0 -1.53 7.62 0 0 1.53 1.53 0 0 7.61 1.52 0 0 -6.09 4.57 0 0 -1.52 -4.57 0z" fill="currentColor"></path><path d="M24.38 28.955h1.53v1.52h-1.53Z" fill="currentColor"></path><path d="M22.86 27.435h1.52v1.52h-1.52Z" fill="currentColor"></path><path d="M19.81 25.905h3.05v1.53h-3.05Z" fill="currentColor"></path><path d="M19.81 22.855h1.53v1.53h-1.53Z" fill="currentColor"></path><path d="M18.29 16.765h1.52v3.05h-1.52Z" fill="currentColor"></path><path d="M12.19 24.385h7.62v1.52h-7.62Z" fill="currentColor"></path><path d="M13.72 21.335h4.57v1.52h-4.57Z" fill="currentColor"></path><path d="M12.19 16.765h1.53v3.05h-1.53Z" fill="currentColor"></path><path d="M10.67 22.855h1.52v1.53h-1.52Z" fill="currentColor"></path><path d="M9.15 25.905h3.04v1.53H9.15Z" fill="currentColor"></path><path d="M7.62 27.435h1.53v1.52H7.62Z" fill="currentColor"></path><path d="M6.1 28.955h1.52v1.52H6.1Z" fill="currentColor"></path><path d="M3.05 13.715h1.52v1.53H3.05Z" fill="currentColor"></path><path d="M1.53 16.765h3.04v1.52H1.53Z" fill="currentColor"></path><path d="M0 18.285h1.53v1.53H0Z" fill="currentColor"></path></svg>
+								<svg aria-hidden="true" focusable="false" width="32" height="32" viewBox="0 0 32 32"><path d="M30.48 18.285H32v1.53h-1.52Z" fill="currentColor"></path><path d="M27.43 16.765h3.05v1.52h-3.05Z" fill="currentColor"></path><path d="M27.43 13.715h1.52v1.53h-1.52Z" fill="currentColor"></path><path d="m22.86 15.245 0 -3.05 -1.52 0 0 -1.53 -1.53 0 0 -3.04 1.53 0 0 -1.53 6.09 0 0 1.53 1.52 0 0 6.09 1.53 0 0 -9.14 -1.53 0 0 -1.53 -1.52 0 0 -1.52 -6.09 0 0 1.52 -1.53 0 0 1.53 -1.52 0 0 4.57 -4.57 0 0 -4.57 -1.53 0 0 -1.53 -1.52 0 0 -1.52 -6.1 0 0 1.52 -1.52 0 0 1.53 -1.52 0 0 9.14 1.52 0 0 -6.09 1.52 0 0 -1.53 6.1 0 0 1.53 1.52 0 0 3.04 -1.52 0 0 1.53 -1.52 0 0 3.05 -4.58 0 0 1.52 4.58 0 0 6.09 1.52 0 0 -7.61 1.52 0 0 -1.53 7.62 0 0 1.53 1.53 0 0 7.61 1.52 0 0 -6.09 4.57 0 0 -1.52 -4.57 0z" fill="currentColor"></path><path d="M24.38 28.955h1.53v1.52h-1.53Z" fill="currentColor"></path><path d="M22.86 27.435h1.52v1.52h-1.52Z" fill="currentColor"></path><path d="M19.81 25.905h3.05v1.53h-3.05Z" fill="currentColor"></path><path d="M19.81 22.855h1.53v1.53h-1.53Z" fill="currentColor"></path><path d="M18.29 16.765h1.52v3.05h-1.52Z" fill="currentColor"></path><path d="M12.19 24.385h7.62v1.52h-7.62Z" fill="currentColor"></path><path d="M13.72 21.335h4.57v1.52h-4.57Z" fill="currentColor"></path><path d="M12.19 16.765h1.53v3.05h-1.53Z" fill="currentColor"></path><path d="M10.67 22.855h1.52v1.53h-1.52Z" fill="currentColor"></path><path d="M9.15 25.905h3.04v1.53H9.15Z" fill="currentColor"></path><path d="M7.62 27.435h1.53v1.52H7.62Z" fill="currentColor"></path><path d="M6.1 28.955h1.52v1.52H6.1Z" fill="currentColor"></path><path d="M3.05 13.715h1.52v1.53H3.05Z" fill="currentColor"></path><path d="M1.53 16.765h3.04v1.52H1.53Z" fill="currentColor"></path><path d="M0 18.285h1.53v1.53H0Z" fill="currentColor"></path></svg>
 							</div>
 							<div class="feature-title pixel feature-title--light">Pensada para todos</div>
 							<div class="feature-copy feature-copy--light">
@@ -251,7 +347,7 @@ export const prerender = true;
 
 			<!-- GREEN CTA OVER PHOTO -->
 			<section class="cta-photo">
-				<img src="/images/2-sala-de-espera.png" alt="" />
+				<img width="323" height="700" loading="lazy" decoding="async" src="/images/2-sala-de-espera.webp" alt="" />
 				<div class="overlay">
 					<h2 class="pixel cta-title">REÚNE A TU MESA</h2>
 					<p class="cta-copy">
@@ -277,7 +373,7 @@ export const prerender = true;
 					<div class="deck-grid">
 						<div class="deck-card pixel-panel">
 							<div class="card-thumb">
-								<img src="/images/cards/perrault-zapato-cristal.png" alt="Carta El Zapato de Cristal, del mazo Cuentos de Perrault" />
+								<img width="420" height="598" loading="lazy" decoding="async" src="/images/cards/perrault-zapato-cristal.webp" srcset="/images/cards/perrault-zapato-cristal-sm.webp 220w, /images/cards/perrault-zapato-cristal.webp 420w" sizes="140px" alt="Carta El Zapato de Cristal, del mazo Cuentos de Perrault" />
 							</div>
 							<div class="deck-text">
 								<div class="deck-name">Cuentos de Perrault</div>
@@ -286,7 +382,7 @@ export const prerender = true;
 						</div>
 						<div class="deck-card pixel-panel">
 							<div class="card-thumb">
-								<img src="/images/cards/grimm-principe-rana.png" alt="Carta El Príncipe Rana, del mazo Hermanos Grimm" />
+								<img width="420" height="574" loading="lazy" decoding="async" src="/images/cards/grimm-principe-rana.webp" srcset="/images/cards/grimm-principe-rana-sm.webp 220w, /images/cards/grimm-principe-rana.webp 420w" sizes="140px" alt="Carta El Príncipe Rana, del mazo Hermanos Grimm" />
 							</div>
 							<div class="deck-text">
 								<div class="deck-name">Hermanos Grimm</div>
@@ -295,7 +391,7 @@ export const prerender = true;
 						</div>
 						<div class="deck-card pixel-panel">
 							<div class="card-thumb">
-								<img src="/images/cards/carroll-jardin-rosas.png" alt="Carta El Jardín de Rosas, del mazo País de las Maravillas" />
+								<img width="420" height="574" loading="lazy" decoding="async" src="/images/cards/carroll-jardin-rosas.webp" srcset="/images/cards/carroll-jardin-rosas-sm.webp 220w, /images/cards/carroll-jardin-rosas.webp 420w" sizes="140px" alt="Carta El Jardín de Rosas, del mazo País de las Maravillas" />
 							</div>
 							<div class="deck-text">
 								<div class="deck-name">País de las Maravillas</div>
@@ -304,7 +400,7 @@ export const prerender = true;
 						</div>
 						<div class="deck-card pixel-panel">
 							<div class="card-thumb">
-								<img src="/images/cards/piratas-kraken.png" alt="Carta El Kraken, del mazo Piratas" />
+								<img width="420" height="634" loading="lazy" decoding="async" src="/images/cards/piratas-kraken.webp" srcset="/images/cards/piratas-kraken-sm.webp 220w, /images/cards/piratas-kraken.webp 420w" sizes="140px" alt="Carta El Kraken, del mazo Piratas" />
 							</div>
 							<div class="deck-text">
 								<div class="deck-name">Piratas</div>
@@ -313,7 +409,7 @@ export const prerender = true;
 						</div>
 						<div class="deck-card pixel-panel">
 							<div class="card-thumb">
-								<img src="/images/cards/griego-zeus.png" alt="Carta Zeus, del mazo Mitología Griega" />
+								<img width="420" height="628" loading="lazy" decoding="async" src="/images/cards/griego-zeus.webp" srcset="/images/cards/griego-zeus-sm.webp 220w, /images/cards/griego-zeus.webp 420w" sizes="140px" alt="Carta Zeus, del mazo Mitología Griega" />
 							</div>
 							<div class="deck-text">
 								<div class="deck-name">Mitología Griega</div>
@@ -322,7 +418,7 @@ export const prerender = true;
 						</div>
 						<div class="deck-card pixel-panel">
 							<div class="card-thumb">
-								<img src="/images/cards/muertos-fruta-temporada.png" alt="Carta La Fruta de Temporada, del mazo Día de Muertos" />
+								<img width="420" height="574" loading="lazy" decoding="async" src="/images/cards/muertos-fruta-temporada.webp" srcset="/images/cards/muertos-fruta-temporada-sm.webp 220w, /images/cards/muertos-fruta-temporada.webp 420w" sizes="140px" alt="Carta La Fruta de Temporada, del mazo Día de Muertos" />
 							</div>
 							<div class="deck-text">
 								<div class="deck-name">Día de Muertos</div>
@@ -331,7 +427,7 @@ export const prerender = true;
 						</div>
 						<div class="deck-card pixel-panel">
 							<div class="card-thumb">
-								<img src="/images/cards/cyberpunk-androide.png" alt="Carta El Androide, del mazo Cyberpunk" />
+								<img width="420" height="624" loading="lazy" decoding="async" src="/images/cards/cyberpunk-androide.webp" srcset="/images/cards/cyberpunk-androide-sm.webp 220w, /images/cards/cyberpunk-androide.webp 420w" sizes="140px" alt="Carta El Androide, del mazo Cyberpunk" />
 							</div>
 							<div class="deck-text">
 								<div class="deck-name">Cyberpunk</div>
@@ -340,7 +436,7 @@ export const prerender = true;
 						</div>
 						<div class="deck-card pixel-panel">
 							<div class="card-thumb">
-								<img src="/images/cards/terror-muneca.png" alt="Carta La Muñeca Embrujada, del mazo Terror Clásico" />
+								<img width="420" height="624" loading="lazy" decoding="async" src="/images/cards/terror-muneca.webp" srcset="/images/cards/terror-muneca-sm.webp 220w, /images/cards/terror-muneca.webp 420w" sizes="140px" alt="Carta La Muñeca Embrujada, del mazo Terror Clásico" />
 							</div>
 							<div class="deck-text">
 								<div class="deck-name">Terror Clásico</div>
@@ -349,7 +445,7 @@ export const prerender = true;
 						</div>
 						<div class="deck-card pixel-panel">
 							<div class="card-thumb">
-								<img src="/images/cards/nordico-thor.png" alt="Carta Thor, del mazo Mitología Nórdica" />
+								<img width="420" height="626" loading="lazy" decoding="async" src="/images/cards/nordico-thor.webp" srcset="/images/cards/nordico-thor-sm.webp 220w, /images/cards/nordico-thor.webp 420w" sizes="140px" alt="Carta Thor, del mazo Mitología Nórdica" />
 							</div>
 							<div class="deck-text">
 								<div class="deck-name">Mitología Nórdica</div>
@@ -375,7 +471,7 @@ export const prerender = true;
 								<div class="iphone-btn iphone-btn--vol1"></div>
 								<div class="iphone-btn iphone-btn--vol2"></div>
 								<div class="iphone-screen">
-									<img src="/images/1-menu.png" alt="Menú principal de Pixotería" />
+									<img width="323" height="700" loading="lazy" decoding="async" src="/images/1-menu.webp" alt="Menú principal de Pixotería" />
 								</div>
 							</div>
 						</div>
@@ -386,7 +482,7 @@ export const prerender = true;
 								<div class="iphone-btn iphone-btn--vol1"></div>
 								<div class="iphone-btn iphone-btn--vol2"></div>
 								<div class="iphone-screen">
-									<img src="/images/2-sala-de-espera.png" alt="Sala de espera antes de la partida" />
+									<img width="323" height="700" loading="lazy" decoding="async" src="/images/2-sala-de-espera.webp" alt="Sala de espera antes de la partida" />
 								</div>
 							</div>
 						</div>
@@ -397,7 +493,7 @@ export const prerender = true;
 								<div class="iphone-btn iphone-btn--vol1"></div>
 								<div class="iphone-btn iphone-btn--vol2"></div>
 								<div class="iphone-screen">
-									<img src="/images/3-mazo-muertos.png" alt="Partida con la baraja Día de Muertos" />
+									<img width="323" height="700" loading="lazy" decoding="async" src="/images/3-mazo-muertos.webp" alt="Partida con la baraja Día de Muertos" />
 								</div>
 							</div>
 						</div>
@@ -410,7 +506,7 @@ export const prerender = true;
 			<section class="section made-by">
 				<div class="mx-auto max-w-7xl px-[25px] sm:px-8 md:px-12 lg:px-16 center">
 					<div class="card-thumb made-by-card">
-						<img src="/images/cards/el-corazon.png" alt="Carta El Corazón" />
+						<img width="400" height="605" loading="lazy" decoding="async" src="/images/cards/el-corazon.webp" srcset="/images/cards/el-corazon-sm.webp 220w, /images/cards/el-corazon.webp 400w" sizes="140px" alt="Carta El Corazón" />
 					</div>
 					<div class="eyebrow">De dónde sale esto</div>
 					<h2 class="heading-lg mx-auto max-w-2xl">Hecha por alguien a quien le gusta la lotería de verdad</h2>
@@ -585,6 +681,8 @@ export const prerender = true;
 				</div>
 			</section>
 
+			</main>
+
 			<!-- FOOTER -->
 			<footer class="checker-bg footer">
 				<div class="mx-auto max-w-7xl px-[25px] sm:px-8 md:px-12 lg:px-16 footer-row">
@@ -610,7 +708,9 @@ export const prerender = true;
 <style is:global>
 	@font-face {
 		font-family: 'BoldPixels';
-		src: url('/fonts/BoldPixels.ttf') format('truetype');
+		src:
+			url('/fonts/BoldPixels.woff2') format('woff2'),
+			url('/fonts/BoldPixels.ttf') format('truetype');
 		font-weight: 400;
 		font-style: normal;
 		font-display: swap;
@@ -639,6 +739,7 @@ export const prerender = true;
 	img {
 		display: block;
 		max-width: 100%;
+		height: auto;
 	}
 	.pixel {
 		font-family: 'BoldPixels', 'Archivo', system-ui, sans-serif;
@@ -686,14 +787,13 @@ export const prerender = true;
 	}
 	.btn-pixel--static {
 		cursor: default;
-		opacity: 0.92;
 	}
 	.btn-pixel--static:hover {
 		transform: none;
 		box-shadow: 4px 4px 0 0 #3f2832;
 	}
 	.btn-pixel--green {
-		background: #3e8948;
+		background: #33773c;
 	}
 	.btn-pixel--play {
 		background: #265c42;
@@ -725,12 +825,12 @@ export const prerender = true;
 		background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
 	}
 	.checker-blue {
-		background-color: #0095e9;
+		background-color: #0a6fae;
 		background-image:
-			linear-gradient(45deg, #1ba6f5 25%, transparent 25%),
-			linear-gradient(-45deg, #1ba6f5 25%, transparent 25%),
-			linear-gradient(45deg, transparent 75%, #1ba6f5 75%),
-			linear-gradient(-45deg, transparent 75%, #1ba6f5 75%);
+			linear-gradient(45deg, #0a78bd 25%, transparent 25%),
+			linear-gradient(-45deg, #0a78bd 25%, transparent 25%),
+			linear-gradient(45deg, transparent 75%, #0a78bd 75%),
+			linear-gradient(-45deg, transparent 75%, #0a78bd 75%);
 		background-size: 16px 16px;
 		background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
 	}
@@ -760,7 +860,7 @@ export const prerender = true;
 		font-size: 18px;
 		letter-spacing: 0.12em;
 		text-transform: uppercase;
-		color: #c4561a;
+		color: #8f3a0c;
 	}
 	.eyebrow--light {
 		color: #fec547;
@@ -1041,7 +1141,7 @@ export const prerender = true;
 		color: #6b4436;
 	}
 	.feature-copy--light {
-		color: #dceefb;
+		color: #ffffff;
 	}
 
 	.showcase-split {
@@ -1086,7 +1186,7 @@ export const prerender = true;
 	}
 	.manifesto-copy {
 		font-size: 18px;
-		color: #e0f2fe;
+		color: #ffffff;
 		max-width: 520px;
 		margin: 12px auto 0;
 	}
