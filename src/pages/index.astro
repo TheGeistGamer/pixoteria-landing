@@ -7,7 +7,8 @@ const siteUrl = (Astro.site ?? new URL('https://pixoteria.infinitydev.agency')).
 const canonical = `${siteUrl}/`;
 const title = 'Pixotería — Lotería mexicana multijugador por WiFi local';
 const description =
-	'Juega lotería mexicana con tu familia y amigos desde el teléfono: multijugador por WiFi local, 9 barajas, sin cuentas y sin internet. Próximamente en App Store y Google Play.';
+	'Juega lotería mexicana con tu familia y amigos desde el teléfono: multijugador por WiFi local, 9 barajas, sin cuentas y sin internet. Ya disponible en App Store; próximamente en Google Play.';
+const appStoreUrl = 'https://apps.apple.com/mx/app/pixoter%C3%ADa/id6809707551';
 const ogImage = `${siteUrl}/og-image.jpg`;
 
 const faqs = [
@@ -43,10 +44,12 @@ const jsonLd = {
 			image: ogImage,
 			applicationCategory: 'GameApplication',
 			genre: ['Lotería', 'Juego de mesa', 'Party game'],
-			operatingSystem: 'iOS, Android',
 			inLanguage: 'es',
 			playMode: 'MultiPlayer',
 			numberOfPlayers: { '@type': 'QuantitativeValue', minValue: 2 },
+			operatingSystem: 'iOS',
+			installUrl: appStoreUrl,
+			sameAs: [appStoreUrl],
 			offers: { '@type': 'Offer', price: '0', priceCurrency: 'MXN' },
 			author: { '@id': `${siteUrl}/#org` },
 		},
@@ -151,7 +154,13 @@ const jsonLd = {
 							cuentas, cero internet — solo tu WiFi y tu gente.
 						</p>
 						<div class="hero-buttons">
-							<span class="btn-pixel btn-pixel--green btn-pixel--static">
+							<a
+								href={appStoreUrl}
+								class="btn-pixel btn-pixel--green"
+								target="_blank"
+								rel="noopener"
+								aria-label="Descargar Pixotería en el App Store"
+							>
 								<svg aria-hidden="true" focusable="false"
 									width="20"
 									height="20"
@@ -163,8 +172,8 @@ const jsonLd = {
 										d="M16 3c0 2-1.5 4-4 4S8 5 8 3M6 8c1-1.5 3-2 6-2s5 .5 6 2c1.2 1.6 2 4 2 7 0 5-3 9-8 9s-8-4-8-9c0-3 .8-5.4 2-7z"
 									></path></svg
 								>
-								Próximamente · App Store
-							</span>
+								Descargar en App Store
+							</a>
 							<span class="btn-pixel btn-pixel--play btn-pixel--static">
 								<svg aria-hidden="true" focusable="false"
 									width="20"
@@ -354,7 +363,7 @@ const jsonLd = {
 						Cada quien con su teléfono, todos en la misma red. Así se juega
 						lotería en Pixotería.
 					</p>
-					<span class="btn-pixel btn-pixel--green btn-pixel--static">Próximamente en tu tienda</span>
+					<a href={appStoreUrl} class="btn-pixel btn-pixel--green" target="_blank" rel="noopener">Descárgala en App Store</a>
 				</div>
 			</section>
 
@@ -687,6 +696,17 @@ const jsonLd = {
 			<footer class="checker-bg footer">
 				<div class="mx-auto max-w-7xl px-[25px] sm:px-8 md:px-12 lg:px-16 footer-row">
 					<div class="pixel footer-brand">PIXOTERÍA © 2026</div>
+					<a href="https://infinitydev.agency/" target="_blank" rel="noopener" class="footer-maker">
+						<span>Hecho por</span>
+						<img
+							src="/images/infinity-dev.webp"
+							width="178"
+							height="96"
+							loading="lazy"
+							decoding="async"
+							alt="Infinity Dev"
+						/>
+					</a>
 					<a href="https://thegeistgamer.github.io/loteria-privacidad/" target="_blank" rel="noopener" class="footer-link">
 						Política de privacidad completa
 					</a>
@@ -1481,6 +1501,23 @@ const jsonLd = {
 	.footer-brand {
 		font-size: 18px;
 		color: #f6ca9f;
+	}
+	.footer-maker {
+		display: inline-flex;
+		align-items: center;
+		gap: 12px;
+		color: #f6ca9f;
+		font-size: 14px;
+		text-decoration: none;
+	}
+	.footer-maker img {
+		height: 48px;
+		width: auto;
+		opacity: 0.85;
+		transition: opacity 0.15s ease;
+	}
+	.footer-maker:hover img {
+		opacity: 1;
 	}
 	.footer-link {
 		color: #fec547;

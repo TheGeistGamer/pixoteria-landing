@@ -44,8 +44,9 @@ un FAQ + un contacto visible ya cumple el requisito.
       no funciona con el adapter de Astro para Cloudflare (lo probé — el
       config que realmente usa el deploy no lo incluye), hay que hacerlo
       desde el dashboard.
-- [ ] Reemplazar los botones "Próximamente" del hero por los links reales de
-      App Store / Google Play una vez que la app esté publicada.
+- [x] Link real de App Store en el hero y en el CTA.
+- [ ] Reemplazar el botón "Próximamente · Google Play" por el link real
+      cuando la app esté publicada en Play Store.
 - [x] Actualizar `og:image` con una imagen pensada para redes (1200×630)
       (`public/og-image.jpg`).
 - [ ] Si el dominio final no es `pixoteria.infinitydev.agency`, cambiar `site`
